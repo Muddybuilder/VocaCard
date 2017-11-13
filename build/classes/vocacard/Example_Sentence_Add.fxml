@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="536.0" style="-fx-background-color: linear-gradient(#40444F 0%, #9AA0A7 100%);" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.Example_Sentence_AddController">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="51.0" prefWidth="331.0">
+         <children>
+            <Label id="bold18" fx:id="lbltitle" focusTraversable="false" layoutX="7.0" layoutY="2.0" text="예문/예문해석 추가">
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="WHITE" offset="0.0078125" />
+                        <Stop color="#bfbfbf" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label id="nm9" fx:id="lblsubtitle" focusTraversable="false" layoutX="8.0" layoutY="30.0" text="예문/예문 해석을 추가합니다." textFill="#e1e1e1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label id="nm10" fx:id="lbl1" focusTraversable="false" layoutX="20.0" layoutY="190.0" text="추가할 예문 해석 (선택 사항) :" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label id="nm10" fx:id="lbl0" focusTraversable="false" layoutX="20.0" layoutY="89.0" text="추가할 예문 (필수 입력) :" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button id="nm10" fx:id="btnadd" alignment="TOP_CENTER" defaultButton="true" focusTraversable="false" layoutX="20.0" layoutY="304.0" mnemonicParsing="false" onAction="#OnAdd" prefHeight="28.0" prefWidth="502.0" style="-fx-graphic: url('vocacard/image/_check.png');" text="입력한 예문/예문 해석 추가" />
+      <Button id="nm10" fx:id="btncancel" focusTraversable="false" layoutX="415.0" layoutY="346.0" mnemonicParsing="false" onAction="#OnCancel" prefHeight="28.0" prefWidth="107.0" text="취소" />
+      <Button id="nm10" fx:id="btnclear" focusTraversable="false" layoutX="20.0" layoutY="346.0" mnemonicParsing="false" onAction="#OnClear" prefHeight="28.0" prefWidth="104.0" text="모두 지우기..." />
+      <Label id="bold11" fx:id="s0err" alignment="TOP_LEFT" focusTraversable="false" layoutX="20.0" layoutY="154.0" prefHeight="22.0" prefWidth="502.0" style="-fx-graphic: url('vocacard/image/error.png'); -fx-text-fill: orange;" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label id="bold11" fx:id="s1err" alignment="TOP_LEFT" focusTraversable="false" layoutX="20.0" layoutY="256.0" prefHeight="22.0" prefWidth="502.0" style="-fx-graphic: url('vocacard/image/error.png'); -fx-text-fill: orange;" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Pane fx:id="texpane" layoutX="20.0" layoutY="214.0" prefHeight="42.0" prefWidth="502.0" />
+      <Pane fx:id="expane" layoutX="20.0" layoutY="112.0" prefHeight="42.0" prefWidth="502.0" />
+   </children>
+</Pane>

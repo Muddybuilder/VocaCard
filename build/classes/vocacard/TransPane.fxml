@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="v2" prefHeight="195.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.TransPaneController">
+   <children>
+      <VBox fx:id="v3" prefHeight="286.0" prefWidth="543.0" spacing="5.0">
+         <children>
+            <Pane fx:id="lvpane" prefHeight="249.0" prefWidth="527.0" VBox.vgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="8.0" top="8.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="v4" prefHeight="279.0" prefWidth="145.0" spacing="5.0">
+         <padding>
+            <Insets bottom="8.0" top="8.0" />
+         </padding>
+         <children>
+            <Button id="nm11" fx:id="btnadd" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onAdd" prefHeight="86.0" prefWidth="142.0" style="-fx-graphic: url('vocacard/image/article_add.png');" text="단어 변화 형태 추가" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+            <Button id="nm11" fx:id="btndel" alignment="CENTER" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onDelete" prefHeight="86.0" prefWidth="142.0" style="-fx-graphic: url('vocacard/image/article_delete.png');" text="단어 변화 형태 삭제" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

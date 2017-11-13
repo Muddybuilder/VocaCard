@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="777.0" style="-fx-background-color: linear-gradient(#40444F 0%, #9AA0A7 100%);" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.TransWordController">
+   <top>
+      <BorderPane prefHeight="105.0" prefWidth="1135.0" BorderPane.alignment="CENTER">
+         <left>
+            <VBox prefHeight="85.0" prefWidth="383.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="bold18" fx:id="c0" prefHeight="40.0" prefWidth="361.0" text="단어 변화 형태 추가" VBox.vgrow="ALWAYS">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                     </effect>
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="WHITE" offset="0.0078125" />
+                              <Stop color="#bfbfbf" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+                  <Label id="nm9" fx:id="c1" prefHeight="16.0" prefWidth="369.0" text="단어 변화 형태를 추가합니다." textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </left>
+         <right>
+            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="78.0" spacing="7.0" BorderPane.alignment="TOP_LEFT">
+               <children>
+                  <Button fx:id="btnhelp" mnemonicParsing="false" onAction="#OnHelp" prefHeight="73.0" prefWidth="68.0" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <Pane>
+                           <children>
+                              <Label id="nm10" alignment="CENTER" layoutX="-12.0" layoutY="48.0" prefHeight="15.0" prefWidth="75.0" text="도움말" />
+                              <ImageView fitHeight="51.0" fitWidth="44.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/help.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </graphic>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </BorderPane.margin>
+            </HBox>
+         </right>
+      </BorderPane>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="1135.0" BorderPane.alignment="CENTER">
+         <center>
+            <HBox>
+               <children>
+                  <Pane fx:id="k1" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label id="bold11" layoutX="15.0" layoutY="15.0" text="기본 정보">
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="WHITE" />
+                                    <Stop color="WHITE" offset="0.0078125" />
+                                    <Stop color="#bfbfbf" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                        <BorderPane fx:id="b1" layoutX="15.0" layoutY="51.0" prefHeight="19.0" prefWidth="379.0">
+                           <left>
+                              <Label id="nm10" alignment="TOP_LEFT" style="-fx-graphic: url('vocacard/image/star.png'); -fx-text-fill: yellow;" text="현재형 (필수) : " textFill="WHITE" BorderPane.alignment="CENTER" />
+                           </left>
+                           <right>
+                              <CheckBox id="nm10" mnemonicParsing="false" selected="true" text="단어명과 현재형 같음" textFill="WHITE" BorderPane.alignment="CENTER" />
+                           </right>
+                        </BorderPane>
+                        <Pane fx:id="p1" layoutX="15.0" layoutY="78.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Pane fx:id="p2" layoutX="15.0" layoutY="159.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Pane fx:id="p3" layoutX="15.0" layoutY="240.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Label id="bold11" focusTraversable="false" layoutX="15.0" layoutY="295.0" prefHeight="26.0" prefWidth="378.0" text="* 단어장에 '현재형-과거형-과거분사'로 표기됩니다." textAlignment="JUSTIFY" textFill="#ffd600" wrapText="true" />
+                        <Label id="nm10" focusTraversable="false" layoutX="17.0" layoutY="321.0" text="  예시) read-read-read" textFill="WHITE" />
+                        <Label id="nm10" alignment="TOP_LEFT" layoutX="15.0" layoutY="133.0" style="-fx-graphic: url('vocacard/image/star.png'); -fx-text-fill: yellow;" text="과거형 (필수) : " textFill="WHITE" />
+                        <Label id="nm10" alignment="TOP_LEFT" layoutX="15.0" layoutY="214.0" style="-fx-graphic: url('vocacard/image/star.png'); -fx-text-fill: yellow;" text="과거 분사 (필수) : " textFill="WHITE" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="k2">
+                     <children>
+                        <Pane fx:id="p4" layoutX="15.0" layoutY="77.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Pane fx:id="p5" layoutX="15.0" layoutY="158.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Pane fx:id="p6" layoutX="15.0" layoutY="239.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Pane fx:id="p7" layoutX="15.0" layoutY="320.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Pane fx:id="p8" layoutX="15.0" layoutY="401.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Pane fx:id="p9" layoutX="15.0" layoutY="482.0" prefHeight="47.0" prefWidth="561.0" />
+                        <Label id="bold11" layoutX="15.0" layoutY="15.0" text="추가 정보">
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="WHITE" />
+                                    <Stop color="WHITE" offset="0.0078125" />
+                                    <Stop color="#bfbfbf" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="nm10" layoutX="15.0" layoutY="51.0" text="3인칭 단수형 (선택) : " textFill="WHITE" />
+                        <Label id="nm10" layoutX="15.0" layoutY="132.0" text="복수형 (선택) : " textFill="WHITE" />
+                        <Label id="nm10" layoutX="15.0" layoutY="213.0" text="현재 분사 (선택) : " textFill="WHITE" />
+                        <Label id="nm10" layoutX="15.0" layoutY="294.0" text="명사형 (선택) : " textFill="WHITE" />
+                        <Label id="nm10" layoutX="15.0" layoutY="375.0" text="형용사형 (선택) : " textFill="WHITE" />
+                        <Label id="nm10" layoutX="15.0" layoutY="456.0" text="부사형 (선택) : " textFill="WHITE" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </center>
+   <bottom>
+      <BorderPane prefHeight="33.0" prefWidth="1105.0" BorderPane.alignment="CENTER">
+         <right>
+            <HBox prefHeight="42.0" prefWidth="258.0" spacing="7.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="nm10" fx:id="btnadd" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#onAdd" prefHeight="42.0" prefWidth="134.0" style="-fx-graphic: url('vocacard/image/_check.png');" text="내용 추가" HBox.hgrow="ALWAYS" />
+                  <Button id="nm10" fx:id="btncancel" mnemonicParsing="false" onAction="#onCancel" prefHeight="40.0" prefWidth="117.0" text="취소" />
+               </children>
+            </HBox>
+         </right>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+         <left>
+            <Button id="nm10" fx:id="btnclear" mnemonicParsing="false" onAction="#onClear" prefHeight="40.0" prefWidth="117.0" text="모두 지우기" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
+   </bottom>
+</BorderPane>

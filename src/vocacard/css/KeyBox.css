@@ -1,0 +1,383 @@
+.text{
+    -fx-font-smoothing-type: lcd;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: #D1E8FF;
+}
+
+.list-cell:even {
+    -fx-background-color: white;
+}
+
+.list-cell:odd {
+    -fx-background-color: white;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #E5F3FB;
+}
+
+/*100%*/
+#bold22{
+    -fx-font-family: 'Noto Sans CJK KR Bold', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: bolder;
+    -fx-font-size: 29px;    
+}
+
+#bold18{
+    -fx-font-family: 'Noto Sans CJK KR Bold', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: bolder;
+    -fx-font-size: 25px;
+}
+
+#bold11{
+    -fx-font-family: 'Noto Sans CJK KR Bold', 'Noto Sans Bold', 'Noto Kufi Arabic Bold', 'Noto Naskh Arabic Bold', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: bolder;
+    -fx-font-size: 14px;
+}
+
+#bold10{
+    -fx-font-family: 'Noto Sans CJK KR Bold', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: bolder;
+    -fx-font-size: 13px;
+}
+
+#bold14{
+    -fx-font-family: 'Noto Sans CJK KR Bold', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: bolder;
+    -fx-font-size: 15px;
+}
+
+#bold16{
+    -fx-font-family: 'Noto Sans CJK KR Bold', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: bolder;
+    -fx-font-size: 17px;
+}
+
+#nm13{
+    -fx-font-family: 'Noto Sans CJK KR DemiLight', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: lighter;
+    -fx-font-size: 14px;
+}
+
+#nm9{
+    -fx-font-family: 'Noto Sans CJK KR DemiLight', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: lighter;
+    -fx-font-size: 15px;
+}
+
+#nm11{
+    -fx-font-family: 'Noto Sans CJK KR DemiLight', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: lighter;
+    -fx-font-size: 13px;
+}
+
+#nm13{
+    -fx-font-family: 'Noto Sans CJK KR DemiLight', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: lighter;
+    -fx-font-size: 15px;
+}
+
+#nm10{
+    -fx-font-family: 'Noto Sans CJK KR DemiLight', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: lighter;
+    -fx-font-size: 14px;
+}
+
+#nm15{
+    -fx-font-family: 'Noto Sans CJK KR DemiLight', 'Noto Sans', 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: lighter;
+    -fx-font-size: 17px;
+}
+
+#tnm30{
+    -fx-font-family: 'Arial';
+    -fx-font-weight: lighter;
+    -fx-font-size: 30px;
+}
+
+#tnm25{
+    -fx-font-family: 'Arial';
+    -fx-font-weight: lighter;
+    -fx-font-size: 27px;
+}
+
+#tnm23{
+    -fx-font-family: 'Arial';
+    -fx-font-weight: lighter;
+    -fx-font-size: 25px;
+}
+
+#tnm20{
+    -fx-font-family: 'Arial';
+    -fx-font-weight: lighter;
+    -fx-font-size: 22px;
+}
+
+#nm28{
+    -fx-font-family: 'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans CJK JP DemiLight', 'Noto Sans CJK KR DemiLight', 'Noto Sans CJK SC DemiLight', 'Noto Sans CJK TC DemiLight', 'Noto Sans Devanagari', 'Noto Sans Georgian', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', 'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Lao', 'Noto Sans', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai';
+    -fx-font-weight: lighter;
+    -fx-font-size: 30px;
+}
+
+/*125%*/
+#bold22_125{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 31px;
+}
+
+#bold18_125{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 23px;
+}
+
+#bold11_125{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 16px;
+}
+
+#bold10_125{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 14px;
+}
+
+#bold14_125{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 17px;
+}
+
+#bold16_125{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 20px;
+}
+
+#nm13_125{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 15px;
+}
+
+#nm9_125{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 16px;
+}
+
+
+#nm11_125{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 19px;
+}
+
+#nm13_125{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 16px;
+}
+
+#nm10_125{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 15px;
+}
+
+#nm15_125{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 18px;
+}
+
+#tnm30_125{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 37px;
+}
+
+#tnm25_125{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 31px;
+}
+
+#tnm23_125{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 28px;
+}
+
+#tnm20_125{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 25px;
+}
+
+#nm28_125{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 35px;
+}
+
+/*150%*/
+#bold22_150{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 37px;
+}
+
+#bold18_150{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 28px;
+}
+
+#bold11_150{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 19px;
+}
+
+#bold10_150{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 17px;
+}
+
+#bold14_150{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 21px;
+}
+
+#bold16_150{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 24px;
+}
+
+#nm13_150{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 18px;
+}
+
+#nm9_150{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 19px;
+}
+
+
+#nm11_150{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 16px;
+}
+
+#nm13_150{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 19px;
+}
+
+#nm10_150{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 18px;
+}
+
+#nm15_150{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 22px;
+}
+
+#tnm30_150{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 45px;
+}
+
+#tnm25_150{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 37px;
+}
+
+#tnm23_150{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 34px;
+}
+
+#tnm20_150{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 30px;
+}
+
+#nm28_150{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 44px;
+}
+
+/*200*/
+#bold22_200{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 50px;
+}
+
+#bold18_200{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 38px;
+}
+
+#bold11_200{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 26px;
+}
+
+#bold10_200{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 22px;
+}
+
+#bold14_200{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 28px;
+}
+
+#bold16_200{
+    -fx-font-family: 'VocaFont Bold';
+    -fx-font-size: 32px;
+}
+
+#nm13_200{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 24px;
+}
+
+#nm9_200{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 26px;
+}
+
+
+#nm11_200{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 22px;
+}
+
+#nm13_200{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 26px;
+}
+
+#nm10_200{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 24px;
+}
+
+#nm15_200{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 30px;
+}
+
+#tnm30_200{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 60px;
+}
+
+#tnm25_200{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 50px;
+}
+
+#tnm23_200{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 46px;
+}
+
+#tnm20_200{
+    -fx-font-family: 'Tahoma';
+    -fx-font-size: 40px;
+}
+
+#nm28_200{
+    -fx-font-family: 'VocaFont';
+    -fx-font-size: 56px;
+}

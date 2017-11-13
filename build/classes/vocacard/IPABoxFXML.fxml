@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.IPABoxFXMLController">
+   <children>
+      <Pane fx:id="tipbox" prefHeight="39.0" prefWidth="688.0">
+         <padding>
+            <Insets left="10.0" top="30.0" />
+         </padding></Pane>
+      <BorderPane fx:id="root" focusTraversable="true" onMouseReleased="#onRootReleased" prefHeight="58.0" prefWidth="688.0" style="-fx-background-color: rgba(0,0,0,0);" stylesheets="@css/KeyBox.css">
+         <center>
+            <AnchorPane fx:id="root4" prefHeight="277.0" prefWidth="688.0" visible="false" BorderPane.alignment="CENTER">
+               <children>
+                  <Rectangle fx:id="root2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="275.0" layoutX="1.0" layoutY="1.0" stroke="BLACK" width="686.0" />
+                  <Label layoutX="7.0" layoutY="7.0" text="fəˈɛ">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button id="nm13" fx:id="btnsel" alignment="TOP_LEFT" layoutX="41.0" layoutY="6.0" mnemonicParsing="false" onAction="#onSelectReleased" prefHeight="23.0" prefWidth="641.0" text="발음 기호 입력법" />
+                  <SVGPath fx:id="svg" content="M 0 0 h 7 l -3.5 4 z" layoutX="669.0" layoutY="15.0" strokeWidth="35.0" />
+                  <StackPane layoutX="7.0" layoutY="32.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Pane fx:id="supra" layoutX="7.0" layoutY="32.0" prefHeight="240.0" prefWidth="675.0">
+                                 <children>
+                                    <VBox fx:id="svbox" layoutX="77.0" layoutY="92.0" prefHeight="55.0" prefWidth="521.0" spacing="3.0">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="s1" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s2" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s3" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s4" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s5" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s6" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s7" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s8" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="s9" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="7.0" layoutY="32.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Pane fx:id="other" layoutX="7.0" layoutY="32.0" prefHeight="240.0" prefWidth="675.0">
+                                 <children>
+                                    <VBox fx:id="ovbox" layoutX="75.0" layoutY="62.0" prefHeight="116.0" prefWidth="525.0" spacing="3.0">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="o1" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o2" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o3" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o4" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o5" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o6" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o7" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o8" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o9" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="54.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="o10" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o11" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o12" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o13" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o14" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o15" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o16" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="o17" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button mnemonicParsing="false" prefHeight="50.0" text="Button" visible="false" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="7.0" layoutY="32.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Pane fx:id="non_pulmo" layoutX="7.0" layoutY="32.0" prefHeight="240.0" prefWidth="675.0">
+                                 <children>
+                                    <VBox fx:id="npbox" layoutX="199.0" layoutY="39.0" prefHeight="168.0" prefWidth="277.0" spacing="3.0">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="n1" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n2" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n3" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n4" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n5" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="55.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="n6" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n7" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n8" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n9" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n10" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="53.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="n11" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n12" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n13" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n14" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="n15" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="7.0" layoutY="32.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Pane fx:id="diacritics" layoutX="7.0" layoutY="32.0" prefHeight="240.0" prefWidth="675.0">
+                                 <children>
+                                    <VBox fx:id="dvbox" prefHeight="239.0" prefWidth="674.0" spacing="5.0">
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0">
+                                             <children>
+                                                <Button id="nm15" fx:id="d1" mnemonicParsing="false" prefHeight="60.0" text="Button">
+                                                   <font>
+                                                      <Font name="Arial Unicode MS" size="21.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="d2" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d3" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d4" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d5" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d6" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d7" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d8" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d9" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d10" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d11" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="d12" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d13" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d14" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d15" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d16" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d17" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d18" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d19" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d20" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d21" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d22" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="d23" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d24" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d25" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d26" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d27" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d28" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d29" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d30" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d31" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button fx:id="d32" mnemonicParsing="false" onAction="#onPushText" prefHeight="60.0" text="Button" />
+                                                <Button mnemonicParsing="false" prefHeight="60.0" text="Button" visible="false" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="7.0" layoutY="32.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Pane fx:id="tones" layoutX="7.0" layoutY="32.0" prefHeight="240.0" prefWidth="675.0">
+                                 <children>
+                                    <VBox fx:id="tvbox" layoutX="199.0" layoutY="39.0" prefHeight="168.0" prefWidth="277.0" spacing="3.0">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="t1" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t2" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t3" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t4" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t5" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="55.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="t6" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t7" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t8" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t9" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t10" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="53.0" prefWidth="278.0" spacing="3.0">
+                                             <children>
+                                                <Button fx:id="t11" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t12" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t13" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t14" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                                <Button fx:id="t15" mnemonicParsing="false" onAction="#onPushText" prefHeight="50.0" text="Button" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="7.0" layoutY="32.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Pane fx:id="help" layoutX="7.0" layoutY="32.0" prefHeight="240.0" prefWidth="675.0" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+                  <Pane fx:id="selector" layoutX="42.0" layoutY="33.0" prefHeight="236.0" prefWidth="639.0" style="-fx-background-color: linear-gradient(#D5D7DC 0%, #BCC4D0 30%, #EDECEC 100%); -fx-background-radius: 3px;" visible="false">
+                     <children>
+                        <VBox fx:id="vbox" layoutX="4.0" layoutY="2.0" prefHeight="230.0" prefWidth="634.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="btn0" mnemonicParsing="false" onAction="#onbtn0Released" prefHeight="63.0" prefWidth="633.0">
+                                 <graphic>
+                                    <Pane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="9.0" layoutY="15.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@image/helpbook.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label id="bold14" layoutX="57.0" layoutY="10.0" text="발음 기호 입력법">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label id="nm13" layoutX="57.0" layoutY="30.0" text="발음 기호 입력법을 설명합니다." />
+                                          <Label id="nm13" layoutX="7.0" layoutY="7.0" text="fəˈɛ">
+                                             <effect>
+                                                <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                                             </effect>
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </graphic>
+                              </Button>
+                              <Line fx:id="ln" endX="530.0" startX="-100.0" stroke="WHITE" />
+                              <Button id="bold14" fx:id="btn1" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onbtn1Released" prefHeight="23.0" prefWidth="633.0" text="발음 구별 기호">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button id="bold14" fx:id="btn2" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onbtn2Released" prefHeight="23.0" prefWidth="633.0" text="비폐장기류음 기호">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button id="bold14" fx:id="btn3" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onbtn3Released" prefHeight="23.0" prefWidth="633.0" text="상단 발음 기호">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button id="bold14" fx:id="btn4" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onbtn4Released" prefHeight="23.0" prefWidth="633.0" text="성조 기호">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button id="bold14" fx:id="btn5" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onbtn5Released" prefHeight="23.0" prefWidth="633.0" text="기타 기호">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <AnchorPane prefHeight="36.0" prefWidth="680.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Rectangle fx:id="root1" arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="53.0" stroke="#dddbdb" strokeType="OUTSIDE" strokeWidth="0.1" width="685.0">
+                     <effect>
+                        <InnerShadow height="15.0" radius="7.0" width="15.0" />
+                     </effect>
+                  </Rectangle>
+                  <BorderPane fx:id="root3" layoutX="7.0" prefHeight="54.0" prefWidth="674.0">
+                     <left>
+                        <Label text="fəˈɛ" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <effect>
+                              <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                           </effect>
+                        </Label>
+                     </left>
+                     <right>
+                        <Pane prefHeight="36.0" prefWidth="55.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Pane fx:id="clearpane" layoutY="1.0" onMouseReleased="#onClear" prefHeight="50.0" prefWidth="26.0">
+                                 <children>
+                                    <ImageView fx:id="clear" fitHeight="19.0" fitWidth="15.0" layoutX="6.0" layoutY="17.0" onMouseReleased="#onClear" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/clear.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="29.0" layoutY="4.0" prefHeight="45.0" prefWidth="25.0">
+                                 <children>
+                                    <ImageView fx:id="tview" fitHeight="25.0" fitWidth="30.0" layoutY="9.0" onMouseReleased="#onToggle" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/showkeyboard.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </right>
+                     <center>
+                        <TextField id="tnm20" fx:id="tfield" prefHeight="42.0" prefWidth="592.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>

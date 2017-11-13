@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Button fx:id="s1" mnemonicParsing="false" onAction="#onButtonCharAction" prefHeight="35.0" prefWidth="75.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.ToolTipButtonController">
+   <graphic>
+      <Pane prefHeight="30.0" prefWidth="59.0">
+         <children>
+            <Label id="nm9" fx:id="c1" alignment="CENTER" layoutX="16.0" layoutY="-1.0" onKeyReleased="#onButtonCharAction" prefHeight="28.0" prefWidth="44.0" text="\%s" />
+            <Label fx:id="c0" alignment="CENTER" layoutX="-7.0" layoutY="-3.0" onKeyReleased="#onButtonCharAction" prefHeight="33.0" prefWidth="22.0" style="-fx-background-color: lightgrey;" text="\%" />
+         </children>
+      </Pane>
+   </graphic>
+</Button>

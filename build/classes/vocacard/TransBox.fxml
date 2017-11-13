@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="root" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.TransBoxController">
+   <children>
+      <VBox fx:id="vbox" layoutX="8.0" layoutY="7.0" prefHeight="228.0" prefWidth="565.0" spacing="3.0">
+         <children>
+            <Label id="bold11" text="[단어 변화 형태]" textFill="#909090" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextFlow fx:id="tf1" prefHeight="25.0" prefWidth="539.0" VBox.vgrow="NEVER">
+               <children>
+                  <Text id="bold10" fx:id="txt1" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="\%1" wrappingWidth="518.2109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf2" prefHeight="27.0" prefWidth="539.0" VBox.vgrow="NEVER">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 3인칭 단수형 : " wrappingWidth="83.2109375" />
+                  <Text id="nm11" fx:id="txt2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.12109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf3" prefHeight="27.0" prefWidth="539.0">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 복수형 : " wrappingWidth="83.2109375" />
+                  <Text id="nm11" fx:id="txt3" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.12109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf4" prefHeight="27.0" prefWidth="539.0">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 현재 분사 : " wrappingWidth="83.2109375" />
+                  <Text id="nm11" fx:id="txt4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.12109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf5" prefHeight="27.0" prefWidth="539.0">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 명사형 : " wrappingWidth="83.2109375" />
+                  <Text id="nm11" fx:id="txt5" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.12109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf6" prefHeight="27.0" prefWidth="539.0">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 형용사 : " wrappingWidth="83.2109375" />
+                  <Text id="nm11" fx:id="txt6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.12109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf7" prefHeight="27.0" prefWidth="539.0">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 부사 : " wrappingWidth="83.2109375" />
+                  <Text id="nm11" fx:id="txt7" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.12109375" />
+               </children>
+            </TextFlow>
+         </children>
+      </VBox>
+   </children>
+</Pane>

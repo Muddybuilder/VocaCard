@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root" minHeight="36.0" prefWidth="687.0" style="-fx-background-color: rgba(0,0,0,0);" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.KeyBoxFXMLController">
+   <top>
+      <AnchorPane prefHeight="36.0" prefWidth="680.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle fx:id="root1" arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="35.0" stroke="#dddbdb" strokeType="OUTSIDE" strokeWidth="0.1" width="687.0">
+               <effect>
+                  <InnerShadow height="15.0" radius="7.0" width="15.0" />
+               </effect>
+            </Rectangle>
+            <BorderPane fx:id="root3" layoutX="7.0" prefHeight="36.0" prefWidth="676.0">
+               <left>
+                  <ImageView fx:id="flag" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@image/10_usa.png" />
+                     </image>
+                  </ImageView>
+               </left>
+               <right>
+                  <Pane prefHeight="36.0" prefWidth="55.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane fx:id="clearpane" layoutY="2.0" onMouseReleased="#onClear" prefHeight="32.0" prefWidth="26.0">
+                           <children>
+                              <ImageView fx:id="clear" fitHeight="19.0" fitWidth="15.0" layoutX="6.0" layoutY="7.0" onMouseReleased="#onClear" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/clear.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <ImageView fx:id="tview" fitHeight="25.0" fitWidth="30.0" layoutX="29.0" layoutY="5.0" onMouseReleased="#onToggle" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/showkeyboard.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </right>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane fx:id="root4" prefHeight="259.0" prefWidth="688.0" visible="false" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Rectangle fx:id="root2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="265.0" layoutX="1.0" layoutY="1.0" stroke="BLACK" width="687.0" />
+            <ImageView fx:id="tflag" fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/10_usa.png" />
+               </image>
+            </ImageView>
+            <Label id="nm10" fx:id="keytitle" layoutX="36.0" layoutY="8.0" text="영어(미국)" />
+            <StackPane fx:id="stack" layoutX="8.0" layoutY="28.0">
+               <children>
+                  <Group fx:id="grp">
+                     <children>
+                        <VBox fx:id="vbox" layoutX="8.0" layoutY="28.0" prefHeight="230.0" prefWidth="667.0" style="-fx-background-color: grey;">
+                           <children>
+                              <HBox prefHeight="48.0" prefWidth="688.0" spacing="3.0">
+                                 <children>
+                                    <Button fx:id="c11" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p11" ellipsisString="'" layoutX="2.0" text="'" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k11" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="'">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c12" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p12" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="1" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k12" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c13" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p13" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="2" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k13" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c14" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p14" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="3" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k14" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c15" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p15" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="4" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k15" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c16" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p16" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="5" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k16" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c17" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p17" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="6" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k17" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c18" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p18" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="7" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k18" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c19" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p19" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="8" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k19" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c20" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p20" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="9" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k20" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c21" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p21" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="0" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k21" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c22" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p22" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="-" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k22" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c23" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p23" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="=" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k23" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c24" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="84.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="p24" ellipsisString="'" layoutX="54.0" layoutY="11.0" text="←" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="nm13" fx:id="p25" alignment="CENTER" layoutX="2.0" layoutY="-2.0" text="Backspace">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="49.0" prefWidth="743.0" spacing="3.0">
+                                 <children>
+                                    <Pane fx:id="c241" disable="true" opacity="0.0" prefHeight="72.0" prefWidth="66.0" />
+                                    <Button fx:id="c25" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-font-family: sans-serif;">
+                                             <children>
+                                                <Label id="bold11" fx:id="p26" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="Q" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k24" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="30.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Serif Regular" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c26" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-font-family: sans-serif;">
+                                             <children>
+                                                <Label id="bold11" fx:id="p27" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="W" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k25" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="30.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c27" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-font-family: sans-serif;">
+                                             <children>
+                                                <Label id="bold11" fx:id="p28" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="E" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k26" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c28" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p29" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="R" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k27" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c29" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p30" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="T" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k28" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c30" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p31" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="Y" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k29" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c31" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p32" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="U" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k30" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c32" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p33" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="I" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k31" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c33" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p34" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="O" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k32" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c34" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p35" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="P" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k33" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c35" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p36" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="[" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k34" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c36" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p37" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="]" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k35" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="30.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c37" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="61.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p38" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="\\" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k36" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="\\">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="48.0" prefWidth="688.0" spacing="3.0">
+                                 <children>
+                                    <Button fx:id="c38" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="85.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="nm13" fx:id="p39" alignment="CENTER" layoutY="1.0" prefHeight="15.0" prefWidth="33.0" text="Caps " textAlignment="CENTER" textOverrun="CLIP">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="nm13" fx:id="p40" alignment="CENTER" layoutX="-1.0" layoutY="14.0" prefHeight="15.0" prefWidth="33.0" text="Lock" textAlignment="CENTER" textOverrun="CLIP">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c39" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p41" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="A" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k37" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c40" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p42" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="S" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k38" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c41" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p43" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="D" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k39" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c42" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p44" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="F" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k40" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c43" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p45" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="G" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k41" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c44" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p46" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="H" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k42" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c45" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p47" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="J" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k43" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c46" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p48" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="K" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k44" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c47" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p49" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="L" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k45" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c48" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p50" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text=";" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k46" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c49" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p51" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="'" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k47" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c50" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="87.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="p52" ellipsisString="'" layoutX="47.0" layoutY="12.0" text="↵" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="nm13" fx:id="p53" alignment="CENTER" layoutX="36.0" text="Enter">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="48.0" prefWidth="688.0" spacing="3.0">
+                                 <children>
+                                    <Button fx:id="c51" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="60.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="nm13" fx:id="p54" alignment="CENTER" layoutY="2.0" text="Shift">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="p55" ellipsisString="'" layoutX="8.0" layoutY="14.0" text="⇑" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c521" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold22" fx:id="k48" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c52" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p56" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="Z" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k49" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c53" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p57" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="X" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k50" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c54" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p58" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="C" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k51" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c55" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p59" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="V" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k52" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c56" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p60" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="B" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k53" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c57" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p61" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="N" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k54" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c58" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p62" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="M" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k55" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c59" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p63" ellipsisString="'" layoutX="-2.0" layoutY="-6.0" text="," textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k56" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c60" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p64" ellipsisString="'" layoutX="-2.0" layoutY="-5.0" text="." textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k57" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c61" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="42.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="bold11" fx:id="p65" ellipsisString="'" layoutX="-2.0" layoutY="-2.0" text="/" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="bold22" fx:id="k58" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="15.0" prefWidth="40.0" text="1">
+                                                   <font>
+                                                      <Font name="Arial" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c62" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="112.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="p66" ellipsisString="'" layoutX="75.0" layoutY="12.0" text="⇑" textFill="#6f6e6e">
+                                                   <font>
+                                                      <Font name="System Bold" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="nm13" fx:id="p67" alignment="CENTER" layoutX="66.0" layoutY="-1.0" text="Shift">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="48.0" prefWidth="688.0" spacing="3.0">
+                                 <children>
+                                    <Button fx:id="c63" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="70.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="nm13" fx:id="p68" alignment="CENTER" layoutX="-10.0" layoutY="9.0" prefHeight="15.0" prefWidth="70.0" text="Ctrl+Alt">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c64" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="423.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="nm13" fx:id="p69" alignment="CENTER" layoutX="-7.0" layoutY="8.0" prefHeight="16.0" prefWidth="417.0" text="SpaceBar">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c65" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="92.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="nm13" fx:id="p71" alignment="CENTER" ellipsisString="'" layoutX="1.0" layoutY="9.0" prefHeight="18.0" prefWidth="73.0" text="영어(미국)">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="c66" focusTraversable="false" mnemonicParsing="false" onAction="#onButtonAction" prefHeight="41.0" prefWidth="70.0">
+                                       <graphic>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label id="nm13" fx:id="p72" alignment="CENTER" layoutX="-1.0" layoutY="9.0" prefHeight="15.0" prefWidth="57.0" text="Ctrl+Alt">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Group>
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

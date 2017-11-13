@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="494.0" style="-fx-background-color: linear-gradient(#40444F 0%, #9AA0A7 100%);" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.AddWordController">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="51.0" prefWidth="331.0">
+         <children>
+            <Label id="bold18" fx:id="lbltitle" focusTraversable="false" layoutX="7.0" layoutY="2.0" text="단어 뜻/동의어 추가">
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="WHITE" offset="0.0078125" />
+                        <Stop color="#bfbfbf" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label id="nm9" fx:id="lblsubtitle" focusTraversable="false" layoutX="8.0" layoutY="30.0" text="뜻/동의어를 추가합니다." textFill="#e1e1e1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <CheckBox id="nm10" fx:id="usepart" focusTraversable="false" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" onAction="#Onclick" selected="true" text="품사 사용 (선택 사항)" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </CheckBox>
+      <AnchorPane fx:id="partpane" layoutX="46.0" layoutY="99.0" prefHeight="77.0" prefWidth="434.0">
+         <children>
+            <ComboBox id="nm10" fx:id="part" editable="true" layoutY="25.0" prefHeight="23.0" prefWidth="423.0" />
+            <Label id="nm10" fx:id="lbl0" focusTraversable="false" text="추가할 뜻의 품사 :" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label id="bold11" fx:id="s0err" alignment="TOP_LEFT" layoutY="52.0" prefHeight="22.0" prefWidth="423.0" style="-fx-graphic: url('vocacard/image/error.png'); -fx-text-fill: orange;" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="pane" layoutX="18.0" layoutY="182.0" prefHeight="330.0" prefWidth="462.0">
+         <children>
+            <Button id="nm10" fx:id="btnclear" focusTraversable="false" layoutY="291.0" mnemonicParsing="false" onAction="#OnClear" prefHeight="28.0" prefWidth="104.0" text="모두 지우기..." />
+            <Button id="nm10" fx:id="btncancel" focusTraversable="false" layoutX="359.0" layoutY="291.0" mnemonicParsing="false" onAction="#OnCancel" prefHeight="28.0" prefWidth="104.0" text="취소" />
+            <Label id="nm10" fx:id="lbl2" focusTraversable="false" layoutX="5.0" layoutY="89.0" text="추가할 동의어 (선택 사항) : " textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button id="nm10" fx:id="btnadd" alignment="TOP_CENTER" defaultButton="true" focusTraversable="false" layoutX="1.0" layoutY="251.0" mnemonicParsing="false" onAction="#OnAdd" prefHeight="28.0" prefWidth="462.0" style="-fx-graphic: url('vocacard/image/_check.png');" text="입력한 뜻/ 동의어 추가" />
+            <Label id="nm10" fx:id="lbl1" focusTraversable="false" layoutX="4.0" layoutY="2.0" text="추가할 뜻 (필수 입력) :" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label id="bold11" focusTraversable="false" layoutX="5.0" layoutY="182.0" text="* 뜻과 동의어가 여러개 일 경우 ,(콤마)로 구분합니다." textFill="YELLOW" />
+            <Label id="nm13" focusTraversable="false" layoutX="14.0" layoutY="207.0" text="예시) 자유 분방, 방종" textFill="WHITE" />
+            <Label id="nm13" focusTraversable="false" layoutX="46.0" layoutY="222.0" text="leave, ditch, discard, desert" textFill="WHITE" />
+            <Pane fx:id="s2" layoutX="4.0" layoutY="114.0" prefHeight="48.0" prefWidth="462.0" />
+            <Pane fx:id="s1" layoutX="4.0" layoutY="24.0" prefHeight="37.0" prefWidth="462.0" />
+            <Label id="bold11" fx:id="s1err" alignment="TOP_LEFT" layoutX="4.0" layoutY="61.0" prefHeight="22.0" prefWidth="453.0" style="-fx-graphic: url('vocacard/image/error.png'); -fx-text-fill: orange;" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label id="bold11" fx:id="s2err" alignment="TOP_LEFT" layoutX="4.0" layoutY="154.0" prefHeight="22.0" prefWidth="453.0" style="-fx-graphic: url('vocacard/image/error.png'); -fx-text-fill: orange;" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

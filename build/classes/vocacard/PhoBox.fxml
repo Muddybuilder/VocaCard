@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="root" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.PhoBoxController">
+   <children>
+      <VBox fx:id="vbox" layoutX="34.0" layoutY="7.0" spacing="3.0">
+         <children>
+            <Label id="bold11" text="[발음 기호/음성]" textFill="#909090" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin></Label>
+            <TextFlow fx:id="tf1" prefHeight="25.0" prefWidth="539.0" VBox.vgrow="NEVER">
+               <children>
+                  <Text id="bold10" fx:id="txt1" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="\%1" wrappingWidth="518.2109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf2" prefHeight="27.0" prefWidth="539.0" VBox.vgrow="NEVER">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 발음기호 : " wrappingWidth="83.2109375" />
+                  <Text id="nm11" fx:id="txt2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.12109375" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf21" prefHeight="27.0" prefWidth="539.0">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 미리 듣기 : " wrappingWidth="83.2109375" />
+                  <Button fx:id="btnplay" mnemonicParsing="false" style="-fx-graphic: url('vocacard/image/play.png');" />
+                  <Label id="nm11" fx:id="lblcur" text="00:00">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label id="nm11" text="/" />
+                  <Label id="nm11" fx:id="lbltotal" text="00:00" />
+               </children>
+            </TextFlow>
+         </children>
+      </VBox>
+      <CheckBox fx:id="chk" alignment="TOP_LEFT" layoutX="-3.0" layoutY="-3.0" mnemonicParsing="false" stylesheets="@css/KeyBox.css">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </CheckBox>
+   </children>
+</Pane>

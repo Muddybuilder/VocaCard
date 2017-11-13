@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="456.0" prefWidth="607.0" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.AlertDlgController">
+   <children>
+      <Pane fx:id="p1" prefHeight="105.0" prefWidth="607.0" style="-fx-background-color: linear-gradient(#EFEDED 30%, #F9F9F9 80%); -fx-border-color: #C8C8C8;">
+         <children>
+            <Text id="bold16" fx:id="title" layoutX="23.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" wrappingWidth="467.12109375" />
+            <ImageView fitHeight="78.0" fitWidth="88.0" layoutX="515.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/warning_big.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="p2" layoutY="104.0" prefHeight="353.0" prefWidth="607.0" style="-fx-border-color: #C8C8C8; -fx-background-color: #F4F4F4;">
+         <children>
+            <Text id="nm11" fx:id="msg1" layoutX="24.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message" wrappingWidth="558.12109375" />
+            <Text id="nm11" fx:id="msg2" layoutX="24.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message" wrappingWidth="558.12109375" />
+            <ListView fx:id="lv" focusTraversable="false" layoutX="24.0" layoutY="76.0" prefHeight="226.0" prefWidth="558.0" stylesheets="@css/KeyBox.css" />
+            <Button id="nm11" fx:id="btnyes" defaultButton="true" layoutX="390.0" layoutY="311.0" mnemonicParsing="false" onAction="#onYes" prefHeight="28.0" prefWidth="90.0" text="예" />
+            <Button id="nm11" fx:id="btnno" layoutX="492.0" layoutY="311.0" mnemonicParsing="false" onAction="#onNo" prefHeight="28.0" prefWidth="90.0" text="아니오" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

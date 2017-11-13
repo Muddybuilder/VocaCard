@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseReleased="#onRootReleased" prefHeight="752.0" prefWidth="1135.0" style="-fx-background-color: linear-gradient(#40444F 0%, #9AA0A7 100%);" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.WordDlgController">
+   <top>
+      <BorderPane prefHeight="105.0" prefWidth="1135.0" BorderPane.alignment="CENTER">
+         <left>
+            <VBox prefHeight="85.0" prefWidth="383.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="bold18" fx:id="c0" prefHeight="40.0" prefWidth="163.0" text="새 단어 삽입" VBox.vgrow="ALWAYS">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                     </effect>
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="WHITE" offset="0.0078125" />
+                              <Stop color="#bfbfbf" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+                  <Label id="nm9" fx:id="c1" prefHeight="16.0" prefWidth="369.0" text="현재 VocaCard 단어장에 단어를 추가합니다." textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </left>
+         <right>
+            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="172.0" spacing="7.0" BorderPane.alignment="TOP_LEFT">
+               <children>
+                  <Button fx:id="btndic" mnemonicParsing="false" onAction="#OnDic" prefHeight="73.0" prefWidth="97.0" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <Pane>
+                           <children>
+                              <Label id="nm10" layoutX="-2.0" layoutY="48.0" text="사전에서 찾기" />
+                              <ImageView fitHeight="51.0" fitWidth="44.0" layoutX="16.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/dict.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnhelp" mnemonicParsing="false" onAction="#OnHelp" prefHeight="73.0" prefWidth="68.0" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <Pane>
+                           <children>
+                              <Label id="nm10" alignment="CENTER" layoutX="-12.0" layoutY="48.0" prefHeight="15.0" prefWidth="75.0" text="도움말" />
+                              <ImageView fitHeight="51.0" fitWidth="44.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/help.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </graphic>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </BorderPane.margin>
+            </HBox>
+         </right>
+      </BorderPane>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="1135.0" BorderPane.alignment="CENTER">
+         <center>
+            <HBox fx:id="hbox">
+               <children>
+                  <Pane fx:id="h1">
+                     <children>
+                        <Label id="bold11" layoutX="15.0" layoutY="1.0" text="기본 정보">
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="WHITE" />
+                                    <Stop color="WHITE" offset="0.0078125" />
+                                    <Stop color="#bfbfbf" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                        <Pane fx:id="namepane" layoutX="15.0" layoutY="63.0" prefHeight="47.0" prefWidth="524.0" />
+                        <Pane fx:id="meanpane" layoutX="15.0" layoutY="147.0" prefHeight="426.0" prefWidth="536.0" />
+                        <Label id="nm10" alignment="TOP_LEFT" layoutX="15.0" layoutY="37.0" style="-fx-graphic: url('vocacard/image/star.png'); -fx-text-fill: yellow;" text="단어명 (필수) : " textFill="WHITE" />
+                        <Label id="nm10" alignment="TOP_LEFT" layoutX="15.0" layoutY="121.0" style="-fx-graphic: url('vocacard/image/star.png'); -fx-text-fill: yellow;" text="뜻/동의어/예문 (필수) : " textFill="WHITE" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="h2" HBox.hgrow="NEVER">
+                     <children>
+                        <Label id="bold11" layoutX="14.0" text="추가 정보">
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="WHITE" />
+                                    <Stop color="WHITE" offset="0.0078125" />
+                                    <Stop color="#bfbfbf" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="nm10" layoutX="14.0" layoutY="36.0" text="추가 정보 선택 : " textFill="WHITE" />
+                        <Pane fx:id="pane" layoutX="14.0" layoutY="62.0" prefHeight="506.0" prefWidth="531.0">
+                           <children>
+                              <Pane fx:id="p0" layoutX="-7.0" prefWidth="531.0">
+                                 <children>
+                                    <Button id="nm13" fx:id="btnsel" alignment="TOP_LEFT" layoutX="8.0" mnemonicParsing="false" onAction="#onSelectInfo" prefHeight="26.0" prefWidth="517.0" text="단어 변화 형태" />
+                                    <Pane fx:id="selector" layoutX="9.0" layoutY="32.0" prefHeight="357.0" prefWidth="516.0" style="-fx-background-color: linear-gradient(#D5D7DC 0%, #BCC4D0 30%, #EDECEC 100%); -fx-background-radius: 3px;" visible="false">
+                                       <children>
+                                          <VBox fx:id="sv" layoutX="4.0" layoutY="2.0" prefHeight="359.0" prefWidth="518.0" spacing="5.0">
+                                             <children>
+                                                <Button id="bold14" fx:id="s0" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onAdditionalInfo" prefHeight="54.0" prefWidth="509.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="bold14" fx:id="sl0" layoutX="45.0" layoutY="13.0" text="단어 변화 형태" />
+                                                            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/transform.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </Pane>
+                                                   </graphic>
+                                                </Button>
+                                                <Button id="bold14" fx:id="s1" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onAdditionalInfo" prefHeight="54.0" prefWidth="509.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="bold14" fx:id="sl1" layoutX="100.0" layoutY="14.0" text="발음 기호/음성" />
+                                                            <Label layoutX="2.0" layoutY="8.0" text="fəˈɛ">
+                                                               <effect>
+                                                                  <DropShadow blurType="ONE_PASS_BOX" />
+                                                               </effect>
+                                                               <font>
+                                                                  <Font size="25.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="57.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/sound.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label layoutX="47.0" layoutY="14.0" text="/" />
+                                                         </children>
+                                                      </Pane>
+                                                   </graphic>
+                                                </Button>
+                                                <Button id="bold14" fx:id="s2" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onAdditionalInfo" prefHeight="54.0" prefWidth="509.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="bold14" fx:id="sl2" layoutX="59.0" layoutY="16.0" text="유의어/반의어" />
+                                                            <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/card.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="31.0" layoutY="9.0" opacity="0.67" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/warning.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="31.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/exchange.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </Pane>
+                                                   </graphic>
+                                                </Button>
+                                                <Button id="bold14" fx:id="s3" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onAdditionalInfo" prefHeight="54.0" prefWidth="509.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="bold14" fx:id="sl3" layoutX="53.0" layoutY="13.0" text="관련 숙어" />
+                                                            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/blackboard.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </Pane>
+                                                   </graphic>
+                                                </Button>
+                                                <Button id="bold14" fx:id="s4" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onAdditionalInfo" prefHeight="54.0" prefWidth="509.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="bold14" fx:id="sl4" layoutX="52.0" layoutY="13.0" text="관련 그림" />
+                                                            <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/pic.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </Pane>
+                                                   </graphic>
+                                                </Button>
+                                                <Button id="bold14" fx:id="s5" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onAdditionalInfo" prefHeight="54.0" prefWidth="509.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Pane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="bold14" fx:id="sl5" layoutX="51.0" layoutY="13.0" text="추가 텍스트 정보" />
+                                                            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@image/Text.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </Pane>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Pane>
+                                    <SVGPath fx:id="arrow" content="M 0 0 h 7 l -3.5 4 z" layoutX="509.0" layoutY="13.0" strokeWidth="35.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="selpane" layoutX="3.0" layoutY="55.0" prefHeight="449.0" prefWidth="515.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </center>
+      </BorderPane>
+   </center>
+   <bottom>
+      <BorderPane prefHeight="33.0" prefWidth="1105.0" BorderPane.alignment="CENTER">
+         <right>
+            <HBox prefHeight="33.0" prefWidth="258.0" spacing="7.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="nm10" fx:id="btnadd" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#onAdd" prefHeight="42.0" prefWidth="134.0" style="-fx-graphic: url('vocacard/image/_check.png');" text="내용 추가" HBox.hgrow="ALWAYS" />
+                  <Button id="nm10" fx:id="btncancel" mnemonicParsing="false" onAction="#onCancel" prefHeight="40.0" prefWidth="117.0" text="취소" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </right>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="17.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+         <left>
+            <HBox prefHeight="33.0" prefWidth="313.0" spacing="7.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="nm10" fx:id="btnclear" mnemonicParsing="false" onAction="#onClear" prefHeight="40.0" prefWidth="117.0" text="모두 지우기" />
+                  <Button id="nm10" fx:id="btnpreview" mnemonicParsing="false" onAction="#onPreview" prefHeight="40.0" prefWidth="117.0" text="미리보기">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </left>
+      </BorderPane>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,257 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vocacard;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+
+/**
+ * FXML Controller class
+ *
+ * @author user
+ */
+public class ToolTipBoxFXMLController implements Initializable {
+    @FXML
+    private Button btnprev;
+    @FXML
+    private Button s1;
+    @FXML
+    private Label c1;
+    @FXML
+    private Button s2;
+    @FXML
+    private Label c2;
+    @FXML
+    private Button s3;
+    @FXML
+    private Label c3;
+    @FXML
+    private Button s4;
+    @FXML
+    private Label c4;
+    @FXML
+    private Button s5;
+    @FXML
+    private Label c5;
+    @FXML
+    private Button s6;
+    @FXML
+    private Label c6;
+    @FXML
+    private Button s7;
+    @FXML
+    private Label c7;
+    @FXML
+    private Button s8;
+    @FXML
+    private Label c8;
+    @FXML
+    private Button s9;
+    @FXML
+    private Label c9;
+    @FXML
+    private Button s10;
+    @FXML
+    private Label c10;
+    @FXML
+    private Button btnnext;
+    
+    TextField txt;
+    private BorderPane root;
+    
+    Label [] lbls;
+    Button [] btns;
+    String [] data;
+    
+    Pane ipabox;
+    
+    KeyCodeCombination [] shortcuts = {
+        new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN),
+        new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN),
+        new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN),
+        new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN),
+        new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN),
+        new KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN),
+        new KeyCodeCombination(KeyCode.HOME, KeyCombination.SHIFT_DOWN),
+        new KeyCodeCombination(KeyCode.END, KeyCombination.SHIFT_DOWN),
+        new KeyCodeCombination(KeyCode.END),
+        new KeyCodeCombination(KeyCode.HOME),
+        new KeyCodeCombination(KeyCode.LEFT, KeyCombination.SHIFT_DOWN),
+        new KeyCodeCombination(KeyCode.RIGHT, KeyCombination.SHIFT_DOWN),
+        new KeyCodeCombination(KeyCode.LEFT),
+        new KeyCodeCombination(KeyCode.RIGHT),
+        new KeyCodeCombination(KeyCode.INSERT),
+        new KeyCodeCombination(KeyCode.PAGE_UP),
+        new KeyCodeCombination(KeyCode.PAGE_DOWN),
+        new KeyCodeCombination(KeyCode.NUM_LOCK),
+        new KeyCodeCombination(KeyCode.BACK_SPACE),
+        new KeyCodeCombination(KeyCode.DELETE),
+        new KeyCodeCombination(KeyCode.NUMBER_SIGN),
+        new KeyCodeCombination(KeyCode.NUMPAD0),
+        new KeyCodeCombination(KeyCode.NUMPAD1),
+        new KeyCodeCombination(KeyCode.NUMPAD2),
+        new KeyCodeCombination(KeyCode.NUMPAD3),
+        new KeyCodeCombination(KeyCode.NUMPAD4),
+        new KeyCodeCombination(KeyCode.NUMPAD5),
+        new KeyCodeCombination(KeyCode.NUMPAD6),
+        new KeyCodeCombination(KeyCode.NUMPAD7),
+        new KeyCodeCombination(KeyCode.NUMPAD8),
+        new KeyCodeCombination(KeyCode.NUMPAD9),
+    };
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        btnprev.setDisable(true);
+        btnnext.setDisable(true);
+        
+        lbls = new Label [] {c1, c2, c3, c4, c5, c6, c7, c8, c9, c10};
+        btns = new Button [] {s1, s2, s3, s4, s5, s6, s7, s8, s9, s10};
+    }
+    
+    public void setTextField(Pane con, TextField txt){
+        ipabox = con;
+        this.txt = txt;
+    }
+    
+    public void setTextData(String [] s){
+        data = s;
+        
+        for (int c=0; c<btns.length; c++){
+            btns[c].setVisible(false);
+        }
+        
+        for (int c=0; c<s.length; c++){
+            lbls[c].setText(s[c]);
+            btns[c].setVisible(true);
+        }
+    }
+    
+    public void setFocus(){
+        root.requestFocus();
+    }
+
+    @FXML
+    private void onPrev(ActionEvent event) {
+    }
+
+    @FXML
+    private void onButtonCharAction(ActionEvent event) {
+        Button btn = (Button)event.getSource();
+        
+        for (int c=0; c<btns.length; c++){
+            if (btn.equals(btns[c])){
+                insertAtCaret(lbls[c].getText());
+                ipabox.setVisible(false);
+                break;
+            }
+        }
+    }
+
+    @FXML
+    private void onNext(ActionEvent event) {
+    }
+    
+    private void setCaretPosition(int d, int a){
+        int c = txt.getLength();
+        if (d > c)
+            d = c;
+        
+        if (d+a > c)
+            a = c-a;
+        
+        txt.selectRange(d, d+a);
+    }
+    
+    private void insertAtCaret(String f){
+        int d = txt.getSelection().getStart();
+        int b = txt.getSelection().getEnd();
+        
+        String txts = txt.getText();
+        
+        txt.requestFocus();
+        txt.setText(txts.substring(0, d) + f + txts.substring(b, txts.length()));
+        setCaretPosition(d+f.length(), 0);
+    }
+
+    private void onRootKeyReleased(KeyEvent event) {
+        String code = event.getCode().toString();
+        
+         for (int c=0; c<shortcuts.length; c++){
+            if (shortcuts[c].match(event)){
+                return;
+            }
+        }
+        
+        switch(code){
+            case "ESC":
+                //txt.requestFocus();
+                break;
+                
+            case "LEFT":                
+                break;
+                
+            case "RIGHT":
+                break;
+                
+            case "DIGIT1":
+               insertAtCaret( c1.getText());
+                break;
+                
+            case "DIGIT2":
+               insertAtCaret( c2.getText());
+                break;
+                
+            case "DIGIT3":
+               insertAtCaret( c3.getText());
+                break;
+                
+            case "DIGIT4":
+               insertAtCaret( c4.getText());
+                break;
+            
+            case "DIGIT5":
+               insertAtCaret( c5.getText());
+                break;
+                
+            case "DIGIT6":
+               insertAtCaret( c6.getText());
+                break;
+                
+            case "DIGIT7":
+               insertAtCaret( c7.getText());
+                break;
+                
+            case "DIGIT8":
+               insertAtCaret( c8.getText());
+                break;
+                
+            case "DIGIT9":
+               insertAtCaret( c9.getText());
+                break;
+                
+            case "DIGIT0":
+               insertAtCaret( c10.getText());
+                break;
+        }
+        
+        ipabox.setVisible(false);
+    }
+}

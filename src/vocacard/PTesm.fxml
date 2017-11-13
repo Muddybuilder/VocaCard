@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="777.0" style="-fx-background-color: linear-gradient(#40444F 0%, #9AA0A7 100%);" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.PTesmController">
+   <top>
+      <BorderPane prefHeight="105.0" prefWidth="1135.0" BorderPane.alignment="CENTER">
+         <left>
+            <VBox prefHeight="85.0" prefWidth="383.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="bold18" fx:id="c0" prefHeight="40.0" prefWidth="361.0" text="뜻/동의어/예문 추가" VBox.vgrow="ALWAYS">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                     </effect>
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="WHITE" offset="0.0078125" />
+                              <Stop color="#bfbfbf" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+                  <Label id="nm9" fx:id="c1" prefHeight="16.0" prefWidth="369.0" text="뜻/동의어 또는 예문을 추가합니다." textFill="WHITE" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </left>
+         <right>
+            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="78.0" spacing="7.0" BorderPane.alignment="TOP_LEFT">
+               <children>
+                  <Button fx:id="btnhelp" mnemonicParsing="false" onAction="#OnHelp" prefHeight="73.0" prefWidth="68.0" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <Pane>
+                           <children>
+                              <Label id="nm10" alignment="CENTER" layoutX="-12.0" layoutY="48.0" prefHeight="15.0" prefWidth="75.0" text="도움말" />
+                              <ImageView fitHeight="51.0" fitWidth="44.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/help.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </graphic>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </BorderPane.margin>
+            </HBox>
+         </right>
+      </BorderPane>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="1135.0" BorderPane.alignment="CENTER">
+         <center>
+            <HBox fx:id="hb">
+               <children>
+                  <VBox fx:id="vb1" fillWidth="false" spacing="8.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="btn1" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onMeaning" prefHeight="22.0" prefWidth="411.0" style="-fx-base: grey;">
+                           <graphic>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label id="bold11" text="뜻/동의어">
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                                       </effect>
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                       <textFill>
+                                          <LinearGradient endX="1.0" endY="1.0">
+                                             <stops>
+                                                <Stop color="WHITE" />
+                                                <Stop color="WHITE" offset="0.0078125" />
+                                                <Stop color="#bfbfbf" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </graphic>
+                           <effect>
+                              <InnerShadow blurType="ONE_PASS_BOX" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Pane fx:id="vbox1" prefHeight="492.0" prefWidth="303.0">
+                           <children>
+                              <BorderPane prefHeight="19.0" prefWidth="379.0">
+                                 <left>
+                                    <Label id="nm10" fx:id="c2" text="추가할 뜻의 품사 (선택) : " textFill="WHITE" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                              <ComboBox id="nm10" fx:id="p0" editable="true" layoutY="26.0" prefHeight="23.0" prefWidth="378.0" />
+                              <Label id="nm10" fx:id="c3" alignment="TOP_LEFT" layoutY="62.0" style="-fx-graphic: url('vocacard/image/star.png'); -fx-text-fill: yellow;" text="추가할 뜻 (필수) : " textFill="WHITE" />
+                              <Pane fx:id="p4" layoutY="340.0" prefHeight="47.0" prefWidth="561.0" />
+                              <Pane fx:id="p3" layoutY="258.0" prefHeight="47.0" prefWidth="561.0" />
+                              <Pane fx:id="p2" layoutY="172.0" prefHeight="47.0" prefWidth="561.0" />
+                              <Pane fx:id="p1" layoutY="88.0" prefHeight="47.0" prefWidth="561.0" />
+                              <Label id="nm10" fx:id="c4" layoutY="146.0" text="추가할 동의어 (선택) : " textFill="WHITE" />
+                              <Label id="nm10" layoutY="232.0" text="뜻에 해당되는 예문 (선택) : " textFill="WHITE" />
+                              <Label id="nm10" layoutY="314.0" text="뜻에 해당되는 예문 해석 (선택) : " textFill="WHITE" />
+                              <Label id="nm10" layoutX="20.0" layoutY="432.0" prefHeight="26.0" prefWidth="342.0" text="         leave, ditch, discard, desert" textFill="WHITE" wrapText="true" />
+                              <Label id="bold11" fx:id="lbl0" focusTraversable="false" layoutY="387.0" prefHeight="40.0" prefWidth="378.0" text="*** 뜻과 동의어가 여러개일 경우 '콤마(,)'로 구분합니다." textAlignment="JUSTIFY" textFill="#ffd600" wrapText="true" />
+                              <Label id="nm10" layoutX="23.0" layoutY="415.0" prefHeight="25.0" prefWidth="342.0" text="예시) 자유 분방, 방종" textFill="WHITE" wrapText="true" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+                  <VBox fx:id="vb2" fillWidth="false" prefHeight="305.0" prefWidth="553.0" spacing="8.0">
+                     <children>
+                        <Button fx:id="btn2" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onEx" prefHeight="23.0" prefWidth="382.0" style="-fx-base: grey;">
+                           <graphic>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label id="bold11" text="단독 예문/예문 해석">
+                                       <effect>
+                                          <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="2.0" offsetY="2.0" radius="9.5" width="20.0" />
+                                       </effect>
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                       <textFill>
+                                          <LinearGradient endX="1.0" endY="1.0">
+                                             <stops>
+                                                <Stop color="WHITE" />
+                                                <Stop color="WHITE" offset="0.0078125" />
+                                                <Stop color="#bfbfbf" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="7.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Pane fx:id="vbox2" prefHeight="482.0" prefWidth="415.0">
+                           <children>
+                              <Label id="nm10" alignment="TOP_LEFT" style="-fx-graphic: url('vocacard/image/star.png'); -fx-text-fill: yellow;" text="단독 예문 (필수) : " textFill="WHITE" />
+                              <Pane fx:id="p5" layoutY="26.0" prefHeight="47.0" prefWidth="561.0" />
+                              <Label id="nm10" layoutY="85.0" text="단독 예문 해석 (선택) : " textFill="WHITE" />
+                              <Pane fx:id="p6" layoutY="111.0" prefHeight="47.0" prefWidth="561.0" />
+                              <Label id="bold11" focusTraversable="false" layoutX="19.0" layoutY="196.0" prefHeight="21.0" prefWidth="378.0" text="*** 단독 예문/예문 해석이란?" textAlignment="JUSTIFY" textFill="#ffd600" wrapText="true" />
+                              <Label id="nm10" fx:id="lbl1" layoutX="19.0" layoutY="214.0" prefHeight="48.0" prefWidth="340.0" text="단어장에 뜻마다 예문이 있지 않고 독립적으로 예문이 존재하면 이곳에 입력해야 합니다." textFill="WHITE" wrapText="true" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </center>
+   <bottom>
+      <BorderPane prefHeight="33.0" prefWidth="1105.0" BorderPane.alignment="CENTER">
+         <right>
+            <HBox prefHeight="42.0" prefWidth="258.0" spacing="7.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="nm10" fx:id="btnadd" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#onAdd" prefHeight="42.0" prefWidth="134.0" style="-fx-graphic: url('vocacard/image/_check.png');" text="내용 추가" HBox.hgrow="ALWAYS" />
+                  <Button id="nm10" fx:id="btncancel" mnemonicParsing="false" onAction="#onCancel" prefHeight="40.0" prefWidth="117.0" text="취소" />
+               </children>
+            </HBox>
+         </right>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+         <left>
+            <Button id="nm10" fx:id="btnclear" mnemonicParsing="false" onAction="#onClear" prefHeight="40.0" prefWidth="117.0" text="모두 지우기" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
+   </bottom>
+</BorderPane>

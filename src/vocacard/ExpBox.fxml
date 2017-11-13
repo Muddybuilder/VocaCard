@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="root" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.ExpBoxController">
+   <children>
+      <VBox fx:id="vbox" layoutX="36.0" layoutY="7.0" spacing="5.0">
+         <children>
+            <Label id="bold11" text="[예문]" textFill="#909090" VBox.vgrow="NEVER" />
+            <TextFlow fx:id="tf1" prefHeight="35.0" prefWidth="580.0" VBox.vgrow="NEVER">
+               <children>
+                  <Text id="nm11" fx:id="txt1" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="\%1" wrappingWidth="518.2109375" />
+                  <ImageView fx:id="img1" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="tf2" prefHeight="27.0" prefWidth="539.0" VBox.vgrow="NEVER">
+               <children>
+                  <Text id="nm10" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="   - 예문 해석 : " wrappingWidth="83.2109375" />
+                  <Text fx:id="txt2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="450.12109375" />
+                  <ImageView fx:id="img2" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <padding>
+                  <Insets bottom="8.0" />
+               </padding>
+            </TextFlow>
+         </children>
+      </VBox>
+      <CheckBox fx:id="chk" alignment="TOP_LEFT" layoutX="-3.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="16.0" stylesheets="@css/KeyBox.css">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </CheckBox>
+   </children>
+</Pane>

@@ -1,0 +1,1027 @@
+
+
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 	
+		<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+		<head> 
+			<title>i2Speak - Free Online Smart IPA Keyboard</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<meta name="description" content="i2Speak is a free online Smart IPA Keyboard (International Phonetic Alphabet) to quickly write phonetic symbols using Roman letters without the need to memorize any symbol code." />
+			<meta name="keywords" content="IPA, IPA Keyboard, phonetics, phonetics keyboard, SAMPA, SAMPA keyboard, ESL, pronunciation, phonics, phonemic, phoneme, phonetic alphabets, international phonetic alphabet, speech assessment methods phonetic alphabet, free, online, learn English, speak English" />
+			<meta property="og:image" content="http://www.i2speak.com/i2Speak.png"/> 
+			<link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon" />
+			<link rel="stylesheet" href="DevSDK/css/i2template.css" type="text/css" />
+			<link rel="stylesheet" href="/css/i2speak.css?2" type="text/css" /><link rel="stylesheet" href="/JQTabs/JQTabs.css" type="text/css" /><link rel="stylesheet" href="/css/tTip.css" type="text/css" />				
+			
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+			 <script type="text/javascript" src="/js/min/jquery.form.min.js"></script>
+			
+
+			<script type="text/javascript">								
+				//<![CDATA[
+				$(document).ready(function(){
+									
+						
+				download_url = "http://www.i2speak.com/i2speak_download"
+				_active_language =  "Smart IPA"
+				init("");						
+											
+				$(".tTip").betterTooltip({speed: 150, delay: 300});
+											
+				/*-- start tabs --*/
+				//Default Action
+				$(".tab_content").hide(); //Hide all content
+				$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+				$(".tab_content:first").show(); //Show first tab content
+				
+				//On Click Event
+				$("ul.tabs li").click(function() {
+					var defSelection = "Smart IPA";
+					load_keyboard(defSelection);
+					$("ul.tabs li").removeClass("active"); //Remove any "active" class
+					$(this).addClass("active"); //Add "active" class to selected tab
+					$(".tab_content").hide(); //Hide all tab content
+					var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+					$(activeTab).fadeIn(); //Fade in the active content
+					
+					updateListBox("ListBox_Languages", defSelection);
+					$("#autoComplete").hide();
+					
+					return false;
+				});
+				/*-- end tabs --*/
+				
+				/*-- start popup --*/
+				$("a.poplight[href^=#]").click(function() {
+					var popID = $(this).attr("rel"); //Get Popup Name
+					var popURL = $(this).attr("href"); //Get Popup href to define size
+
+					//Pull Query & Variables from href URL
+					var query= popURL.split("?");
+					var dim= query[1].split("&");
+					var popWidth = dim[0].split("=")[1]; //Gets the first query string value
+
+					//Fade in the Popup and add close button
+					$("#" + popID).fadeIn().css({ "width": Number( popWidth ) }).prepend('<a href="#" class="close"><img src="/css/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>');
+					
+					//Define margin for center alignment (vertical   horizontal) - we add 80px to the height/width to accomodate for the padding  and border width defined in the css
+					var popMargTop = ($("#" + popID).height() + 80) / 2;
+					var popMargLeft = ($("#" + popID).width() + 80) / 2;
+
+					//Apply Margin to Popup
+					$("#" + popID).css({
+						"margin-top" : -popMargTop,
+						"margin-left" : -popMargLeft
+					});
+
+					//Fade in Background
+					$("body").append('<div id="fade"></div>'); //Add the fade layer to bottom of the body tag.
+					$("#fade").css({"filter" : "alpha(opacity=80)"}).fadeIn(); //Fade in the fade layer - .css({"filter" : "alpha(opacity=80)"}) is used to fix the IE Bug on fading transparencies 
+
+
+					return false;
+				});
+
+				//Close Popups and Fade Layer
+				$("a.close, #fade").live("click", function() { //When clicking on the close or fade layer...
+					$("#fade , .popup_block").fadeOut(function() {
+						$("#fade, a.close").remove();  //fade them both out
+					});
+					return false;
+				});
+				/*-- end popup --*/
+				
+				jQuery.fn.extend({
+					insertAtCaret: function(myValue){
+					  return this.each(function(i) {
+						if (document.selection) {
+						  this.focus();
+						  sel = document.selection.createRange();
+						  sel.text = myValue;
+						  this.focus();
+						}
+						else if (this.selectionStart || this.selectionStart == "0") {
+						  var startPos = this.selectionStart;
+						  var endPos = this.selectionEnd;
+						  var scrollTop = this.scrollTop;
+						  this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
+						  this.focus();
+						  this.selectionStart = startPos + myValue.length;
+						  this.selectionEnd = startPos + myValue.length;
+						  this.scrollTop = scrollTop;
+						} else {
+						  this.value += myValue;
+						  this.focus();
+						}
+					  })
+					}
+				});							
+											
+				$("#as_text").hide();
+				$("#as_unicode").show();
+									
+				$("#as_unicode").live("click" , function() {
+					$("#preview").css({"font-size":"21px", "color":"#000"});
+					$("#preview").attr("disabled", true);
+					var hex = "";
+					var hexCode = "";
+					var input = $("#preview").val();
+					for(var i = 0; i < input.length; ++i)
+					{
+						// when read a unicode from textarea, it returns it as %uxxxx
+						var unicode = escape(input[i]);
+						if((unicode[0] == "%") && (unicode[1] == "u"))
+						{
+							hexCode = unicode.replace("%u", "&#x") + ";";
+						}
+						else
+						{
+							hexCode = input[i];
+						}
+						
+						// unicode to dec
+						//hexCode = unicode2dec(unicode);
+						
+						hex += hexCode;
+					}		
+					$("#preview").val(hex);
+					$("#as_unicode").hide();
+					$("#as_text").show();
+				
+				});
+				
+				$("#as_text").live("click" , function() {					
+					$("#preview").css({"font-size":_font_size, "color":"#FF0054"});
+					$("#preview").removeAttr("disabled");
+					var hex = "";					
+					var input = $("#preview").val();	
+					input = input.replace(new RegExp("&#x", "g"),"%u");
+					input = input.replace(new RegExp(";", "g"),"");						
+					input = unescape(input);
+					$("#preview").val(input);
+					$("#as_text").hide();
+					$("#as_unicode").show();
+				});									
+
+				$("#download").live("click" , function() {
+					$("#server_job").val("0");
+					$("#font_size").val(_font_size);
+					$(this).css({"opacity":"0.2"});
+				});
+
+				$("#snapshot").live("click" , function() {
+					$("#server_job").val("1");
+					$("#font_size").val(_font_size);
+					$("#i2speak_form").submit();
+				});
+				
+				$("a#Google").click(function () {
+					var query = $("#preview").val().replace(/\s+/g,"+");
+					var url = "http://www.google.com/search?hl=en&q=" + query;
+					$(this).attr("href", url);
+				});							
+
+				$("a#YouTube").click(function () {
+					var query = $("#preview").val().replace(/\s+/g,"+");
+					var url = "http://www.YouTube.com/results?search_query=" + query;
+					$(this).attr("href", url);
+				});							
+				
+				$("a#Flickr").click(function () {
+					var query = $("#preview").val().replace(/\s+/g,"+");
+					var url = "http://www.Flickr.com/search/?q=" + query;
+					$(this).attr("href", url);
+				});						
+
+				$("a#Bing").click(function () {
+					var query = $("#preview").val().replace(/\s+/g,"+");
+					var url = "http://www.bing.com/search?q=" + query;							
+					$(this).attr("href", url);
+				});							
+
+				
+				$("a#Wikipedia").click(function () {
+					var query = $("#preview").val().replace(/\s+/g,"+");
+					var url = "http://www.wikipedia.com/wiki/Special:Search?search=" + query;
+					$(this).attr("href", url);
+				});						
+
+
+				$("a#Twitter").click(function () {
+					//var query = $("#preview").val().replace(/\s+/g,"+");
+					var query = encodeURIComponent($("#preview").val());
+					//var url = "http://www.Twitter.com/#!/search/" + query;
+					var url = "http://twitter.com/intent/tweet?text=" + query + "&via=Sciweavers";
+					window.location = url;
+					return false;  // prevents the initial url from being called
+				});							
+
+				$("a#Facebook").click(function () {
+					var query = $("#preview").val().replace(/\s+/g,"+");
+					//var url = "http://www.Facebook.com/search?hl=en&q=" + query;
+					var url = "http://www.facebook.com/dialog/feed?app_id=199741253396111&message=" + query + "&redirect_uri=http://www.sciweavers.org/i2type";
+					alert("This button will ONLY launches Facebook post dialog. You have to Copy & Paste your typed message manually. This is a Facebook new security restriction :(");
+					$(this).attr("href", url);
+				});							
+
+				
+				$("#preview").keypress(function () {
+					$(this).change();
+				});							
+				
+				$("#preview").keyup(function () {
+					updateCharCount();
+				});	
+				
+				$("#preview").keydown(function () {
+					updateCharCount();
+				});	
+
+				// backlog
+				$("#preview").change(function () {
+					updateCharCount();
+					//$("#i2speak_form").submit();
+				});																
+
+				var options_i2speak_upload_form = { 
+					target:    "#downloadDiv",
+					url:       "/process_form_i2speak",
+					type:      "post",
+				}; 
+				
+				$("#i2speak_form").submit(function() {
+					
+					$(this).ajaxSubmit(options_i2speak_upload_form);
+					return false;
+				});			
+																			
+
+				//
+				// Load to Clipboard
+				//
+				ZeroClipboard.setMoviePath("/zeroclipboard/ZeroClipboard.swf");
+				
+				var clip = new ZeroClipboard.Client();
+
+				clip.addEventListener("mousedown",function() {
+					clip.setText($("#preview").val());
+				});
+				
+				clip.addEventListener("complete",function(client,text) {
+				  $("#preview").fadeOut(250);						  
+				  //$("#copy_status").html("Copied to Clipboard").fadeIn(250);
+				  $("#downloadFile").val("0");
+				  $("#i2speak_form").submit();
+				  $("#preview").fadeIn(250);
+				  $("#copy_status").fadeOut(250);
+				});
+				
+				clip.glue("copy_button", "copy_button_container");										
+		
+
+					$("#hide_banner").click(function() {
+						$("#iBanner").slideUp(700);
+					});
+				//]]>
+				});
+			</script>						
+			
+				<!--[if lt IE 7]>
+				<style media="screen" type="text/css">
+				#iPage {
+					height:100%;
+				}
+				</style>
+				<![endif]-->			
+			</head>
+			<body>			
+			<div id="sci2ools_menu"><a href="http://www.sciweavers.org/sci2ools" title="More Free Tools"></a></div><div id="iPage" class="footer_height"><h1>Free Online IPA Keyboard - International Phonetic Alphabet - Phonetics Keyboard - ESL - SAMPA keyboard</h1><div id="iHeader">
+					<a href="http://www.i2speak.com"><img src="/css/i2speak.png" width="420" height="105" alt="i2Speak" /></a>
+					
+				</div><div class="iContent"><div class="pageWidth"><a name="Top" href="#"></a><div id="Top"><a href="#Top" title="Top of Page" onclick="hideBanner();"></a></div><div style="text-align:center;"><script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- 728x90 Middle -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-5930435762906662"
+				     data-ad-slot="1830010609"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script></div><div class="headline">Write phonetics using English alphabet then search the web or post to social networks by clicking the appropriate button</div><div id="IE_Msg"></div><div class="clearBoth"></div><div>
+				<form id="i2speak_form" action="/process_form_i2speak/1558407773" method="post" enctype="multipart/form-data">									
+					<div class="iContentTypes" id="service_options">
+						<div id="iWall">
+				<div class="iService"><span>search</span><a target="_blank" id="Google"     href="http://www.google.com">   <img class="_google"   src="/css/tr.gif" width="1" height="1" alt="google" /></a></div>
+				<div class="iService"><span>Search</span>  <a target="_blank" id="Bing"     href="http://www.bing.com">     <img class="_bing"     src="/css/tr.gif" width="1" height="1" alt="bing" /></a></div>								
+				<div class="iService"><span>search</span><a target="_blank" id="YouTube"    href="http://www.youtube.com">  <img class="_youtube"  src="/css/tr.gif" width="1" height="1" alt="youtube" /></a></div>
+				<div class="iService"><span>search</span><a target="_blank" id="Flickr"     href="http://www.flickr.com">   <img class="_flickr"   src="/css/tr.gif" width="1" height="1" alt="flickr" /></a></div>
+				<div class="iService"><span>search</span><a target="_blank" id="Wikipedia"  href="http://www.wikipedia.com"><img class="_wikipedia"src="/css/tr.gif" width="1" height="1" alt="wikipedia" /></a></div>				
+				<div class="iService"><span>post</span>  <a target="_blank" id="Twitter"    href="http://www.twitter.com">  <img class="_twitter"  src="/css/tr.gif" width="1" height="1" alt="twitter" /></a></div>
+				<div class="iService"><span>post</span>  <a target="_blank" id="Facebook"   href="http://www.facebook.com"> <img class="_facebook" src="/css/tr.gif" width="1" height="1" alt="facebook" /></a></div>								
+				<div style="clear:both;"></div>
+			</div>			
+			<div class="headline">Type the roman letter (ex: u) that has the same phonetic sound or shape (ex: &#x028A;). Try typing "a\", "a/", "a_", or "a^" to add diacritics or tones fast</div><div id="ikeybrd"><div id="popup_help" class="popup_block"><div class="styleBtn helpBtn"><div class="english">a</div> <div class="unicode">&#x0251;/&#x0252;/&#x0250;/&aelig;/&#x0276;/&alpha;</div></div><div class="styleBtn helpBtn"><div class="english">b</div> <div class="unicode">&#x0299;/&beta;/&#x0253;/&#x025E;</div></div><div class="styleBtn helpBtn"><div class="english">c</div> <div class="unicode">&#x0254;/&ccedil;/&#x0276;/&#x0255;/&#x010D;</div></div><div class="styleBtn helpBtn"><div class="english">d</div> <div class="unicode">&#x0256;/&#x0257;/&#x1E0D;/&#x00F0;</div></div><div class="styleBtn helpBtn"><div class="english">e</div> <div class="unicode">&#x0259;/&#x025A;/&#x0258;/&#x1EB9;/&#x025B;/&#x025C;/&epsilon;</div></div><div class="styleBtn helpBtn"><div class="english">f</div> <div class="unicode">&#x0278;/&#x0284;/&#x025F;</div></div><div class="styleBtn helpBtn"><div class="english">g</div> <div class="unicode">&#x0260;/&#x0261;/&#x0262;/&#x029B;/&gamma;/&#x0263;</div></div><div class="styleBtn helpBtn"><div class="english">h</div> <div class="unicode">&#x0127;/&#x0266;/&#x0265;/&#x029C;/&#x0267;/&#x1E27;/&#x02B0;</div></div><div class="styleBtn helpBtn"><div class="english">i</div> <div class="unicode">&#x026A;/&#x0268;/&#x026A;&#x0308;</div></div><div class="styleBtn helpBtn"><div class="english">j</div> <div class="unicode">&#x025F;/&#x029D;/&#x01F0;/&#x02B2;</div></div><div class="styleBtn helpBtn"><div class="english">l</div> <div class="unicode">&#x029F;/&#x026D;/&#x026E;/&#x026B;/&#x026C;</div></div><div class="styleBtn helpBtn"><div class="english">m</div> <div class="unicode">&#x0271;/&#x026F;/&#x0270;</div></div><div class="styleBtn helpBtn"><div class="english">n</div> <div class="unicode">&#x014B;/&#x0272;/&#x0273;/&#x1E47;/&ntilde;</div></div><div class="styleBtn helpBtn"><div class="english">o</div> <div class="unicode">&#x0254;/&#x0153;/&#x0252;/&ouml;/&#x1ECD;</div></div><div class="styleBtn helpBtn"><div class="english">p</div> <div class="unicode">&#x0278;</div></div><div class="styleBtn helpBtn"><div class="english">r</div> <div class="unicode">&#x0279;/&#x0280;/&#x0281;/&#x027E;/&#x027D;</div></div><div class="styleBtn helpBtn"><div class="english">s</div> <div class="unicode">&#x0283;/&#x0282;/&#x0161;/&#x0284;/&#x015B;/&#x1E63;</div></div><div class="styleBtn helpBtn"><div class="english">t</div> <div class="unicode">&theta;/&#x00F0;/&#x0288;/&#x1E6D;</div></div><div class="styleBtn helpBtn"><div class="english">u</div> <div class="unicode">&#x028A;/&uuml;/&#x0289;</div></div><div class="styleBtn helpBtn"><div class="english">v</div> <div class="unicode">&#x028B;/&#x028C;</div></div><div class="styleBtn helpBtn"><div class="english">w</div> <div class="unicode"><sup>w</sup>/&#x0175;/&#x02B7;/&#x026F;/&#x0270;</div></div><div class="styleBtn helpBtn"><div class="english">x</div> <div class="unicode">&chi;</div></div><div class="styleBtn helpBtn"><div class="english">y</div> <div class="unicode">&#x028F;/&#x028E;/&#x0177;/&#x0263;/&#x0264;</div></div><div class="styleBtn helpBtn"><div class="english">z</div> <div class="unicode">&#x0292;/&#x0290;/&#x017E;/&#x01E93;/&#x0291;</div></div><div class="styleBtn helpBtn"><div class="english">0</div> <div class="unicode">&oslash;/&#x0298;/&#x0275;</div></div><div class="styleBtn helpBtn"><div class="english">1/|</div> <div class="unicode">|/&#x01C0;/&#x2016;/&#x01C1;/&#x01C2;</div></div><div class="styleBtn helpBtn"><div class="english">2/?</div> <div class="unicode">&#x0294;/&#x0295;/&#x02A1;/&#x02A2;</div></div><div class="styleBtn helpBtn"><div class="english">3</div> <div class="unicode">&#x025B;/&#x025C;/&#x0292;/&#x025D;/&#x025E;</div></div><div class="styleBtn helpBtn"><div class="english">=</div> <div class="unicode">&#x2016;/&#x01C1;/&#x01C2;</div></div><div class="styleBtn helpBtn"><div class="english">e:</div> <div class="unicode">&#x02D0;</div></div><div class="styleBtn helpBtn"><div class="english">e'</div> <div class="unicode">e&#x02D1;</div></div><div class="styleBtn helpBtn"><div class="english">e/</div> <div class="unicode">e&#x030B;/e&#x0301;</div></div><div class="styleBtn helpBtn"><div class="english">e\</div> <div class="unicode">e&#x030F;/e&#x0300;</div></div><div class="styleBtn helpBtn"><div class="english">e_</div> <div class="unicode">e&#x0325;/e&#x032F;/e&#x032C;/e&#x0339;/e&#x031C;/e&#x031F;</div></div><div class="styleBtn helpBtn"><div class="english">e^</div> <div class="unicode">e&#x030A;/e&#x02DE;/e&#x0303;/e&#x0308;/e&#x033D;</div></div></div><input type="button" id="back_font" style="padding:7px 0; height:auto; font-weight:bold; width:32px;" class="button silver" onclick="get_back_pane();" value="&#60;" /><input type="button" id="next_font" style="padding:7px 0; height:auto; font-weight:bold; width:32px;" class="button silver" onclick="get_next_pane();" value="&#62;" /><div style="float:left;"><select class="iListBox iListBoxFont" id="ListBox_Types_fonts" name="ListBox_Types_fonts" onchange="update_fonts(this.value)(this.value);"><option value="Verdana, Geneva, sans-serif" > Verdana </option><option value="'Courier New', Courier, monospace" > Courier New </option><option value="Tahoma, Geneva, sans-serif" > Tahoma </option><option value="Arial, Helvetica, sans-serif" > Arial </option><option value="'Comic Sans MS', cursive, sans-serif" > Comic Sans MS </option><option value="Helvetica" > Helvetica </option><option value="'Lucida Console', Monaco, monospace" > Lucida Console </option><option value="'Times New Roman', Times, serif" > Times New Roman </option><option value="'Trebuchet MS', Helvetica, sans-serif" > Trebuchet MS </option><option value="Century Gothic, sans-serif" > Century Gothic </option><option value="Georgia, serif" > Georgia </option><option value="'Lucida Sans Unicode', 'Lucida Grande', sans-serif" selected="selected"> Lucida Sans Unicode </option><option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif" > Palatino Linotype </option></select></div><input type="button" id="font_minus"  style="padding:7px 0; height:auto; font-weight:bold;width:40px; margin-left:10px;" class="button silver" value="A&#x207B;" /><input type="button" id="font_plus"   style="padding:7px 0; height:auto; font-weight:bold;width:40px;" class="button silver" value="A&#x207A;" /><a href="#?w=740" rel="popup_help" class="poplight" style="text-decoration:none;">
+				<input type="button" id="help" class="button silver" style="width:140px; background:#FCBFD7; color:#000; font-weight:bold;padding:5px 0; height:32px;" value="Smart IPA Rules" />
+			</a><input type="submit" id="download"   style="width:80px; font-weight:bold;padding:5px 0; height:32px;" class="button silver" value="Save &#x25BC;"  /><input type="button" id="as_text" style="padding:7px 0; height:auto; font-weight:bold;width:80px;background:#FCBFD7;display:none;" class="button silver" value="Editor" /><input type="button" id="as_unicode" style="padding:7px 0; height:auto; font-weight:bold;width:80px;" class="button silver" value="HTML" /><input type="button" id="snapshot" style="padding:7px 0; height:auto; font-weight:bold;width:90px;" class="button silver" value="Snapshot" /><div id="copy_button_container" style="position:relative;float:left; margin:0 2px;">
+				<input type="button" id="copy_button" class="button cyan" style="padding:7px 0; height:auto; font-weight:bold;width:90px;font:bold 15px tahoma;margin:2px 0 0 0;" value="Copy" />
+			</div><input type="button" id="iChar"  style="padding:7px 0; height:auto; font-weight:bold;width:40px;" class="button silver" value="140" /><div style="clear:both;"></div><div style="position:relative; margin-top:5px;"><textarea id="preview" name="preview" class="iTextArea" rows="1" cols="20" onkeydown="IE_keydown(event);" onkeyup="IE_keyup(event);"></textarea><div id="autoComplete"></div></div><div style="clear:both;"></div>
+		<div class="container"> 
+			<ul class="tabs"> 						
+				<li><a href="#tab1">Keyboard</a></li> 
+				<li><a href="#tab2">Pulmonic 1</a></li> 						
+				<li><a href="#tab3">Pulmonic 2</a></li> 										
+				<li><a href="#tab5">Vowels</a></li>
+				<li><a href="#tab10">Diphthongs</a></li>
+				<li><a href="#tab7">Diacritics</a></li>
+				<li><a href="#tab4">Non-Pulmo.</a></li> 
+				<li><a href="#tab6">Supra.</a></li>
+				<li><a href="#tab8">Tones</a></li>				
+				<li><a href="#tab9">+</a></li>	    				
+			</ul> 
+			<div class="tab_container"> 
+			
+				<div id="tab1" class="tab_content">
+					<div>
+						<div style="margin-left:320px;"><input type="button" id="back_keybrd" style="padding:7px 0; height:auto; font-weight:bold; width:28px;  margin-top:7px;" class="button silver" onclick="get_back_keyboard();" value="&#60;" /><div style="float:left;"><select class="iListBox iListBoxLanguage" id="ListBox_Languages" name="ListBox_Languages" onchange="load_keyboard(this.value);"><option value="Smart IPA" selected="selected"> Smart IPA </option><option value="Sampa English" > Sampa English </option><option value="IPA English" > IPA English </option><option value="Superscript" > Superscript </option><option value="Subscript" > Subscript </option><option value="Reversed" > Reversed </option><option value="LeftRight" > LeftRight </option><option value="Extended" > Extended </option><option value="Barred" > Barred </option></select></div><input type="button" id="next_keybrd" style="padding:7px 0; height:auto; font-weight:bold; width:28px;  margin-top:7px;" class="button silver" onclick="get_next_keyboard();" value="&#62;" /></div>
+						<div class="clear"></div>
+						<div id="keyboard"></div>
+					</div>
+				</div> 
+				
+				<div id="tab2" class="tab_content" style="display:none;">
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 50px;">
+  <tr>
+    <td></td>
+    <td class="tT" colspan="2">Bilabial</td>
+    <td class="tT" colspan="2">Labiodental</td>
+    <td class="tT" colspan="2">Dental</td>
+    <td class="tT" colspan="2">Alveolar</td>
+    <td class="tT" colspan="2">Postalveolar</td>
+    <td class="tT" colspan="2">Retroflex</td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Plosive</td>	
+    <td><input type="button" class="button silver key ipa tTip" title="<b>p</b>et, ma<b>p</b>" value="p" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>b</b>ad, la<b>b</b>" value="b" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>t</b>ea, <b>t</b>able" value="t" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>d</b>og, la<b>d</b>y" value="d" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0288;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0256;" /></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Nasal</td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>m</b>an, le<b>m</b>on"  value="m" /></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0271;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>n</b>o, te<b>n</b>"  value="n" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0273;" /></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Trill</td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0299;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>r</b>ed, t<b>r</b>y"  value="r" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Tap or Flap</td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+   	<td><input type="button" class="button silver keytone tone"  style="" value="&#x2C71;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x027E;" /></td>	
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x027D;" /></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Fricative</td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0278;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x03B2;" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>f</b>ish, <b>f</b>ind" value="f" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>v</b>oice, fi<b>v</b>e" value="v" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>th</b>ink, bo<b>th</b>"  value="&#x03B8;" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>th</b>is, mo<b>th</b>er"  value="&#x00F0;" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>s</b>un, mi<b>ss</b>"  value="s" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>z</b>oo, la<b>z</b>y"  value="z" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>sh</b>e, cra<b>sh</b>"  value="&#x0283;" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="plea<b>s</b>ure, vi<b>s</b>ion"  value="&#x0292;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0282;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0290;" /></td>
+
+  </tr>
+  <tr class="tr">
+    <td class="tL">L. Fricative</td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x026C;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x026E;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+
+  </tr>
+  <tr class="tr">
+    <td class="tL">Approximant</td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x028B;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0279;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x027B;" /></td>
+
+  </tr>
+  <tr class="tr">
+    <td class="tL">L. Approx.</td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>l</b>eg, litt<b>l</b>e"  value="l" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x026D;" /></td>
+  </tr>
+</table>
+					</div>											
+				</div> 
+				
+				<div id="tab3" class="tab_content" style="display:none;">					
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 100px;">
+  <tr>
+    <td></td>
+    <td class="tT" colspan="2">Palatal</td>
+    <td class="tT" colspan="2">Velar</td>
+    <td class="tT" colspan="2">Uvular</td>
+    <td class="tT" colspan="2">Pharyngeal</td>
+    <td class="tT" colspan="2">Glottal</td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Plosive</td>	
+    <td><input type="button" class="button silver key ipa"  value="c" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x025F;" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>c</b>at, <b>k</b>ey" value="k" /></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>g</b>et, <b>g</b>um" value="&#x0261;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="q" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0262;" /></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0294;" /></td>
+    <td class="f"></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Nasal</td>
+    <td class="e"></td>
+	<td><input type="button" class="button silver key ipa"  value="&#x0272;" /></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa tTip" title="si<b>n</b>g, fi<b>n</b>ger"  value="&#x014B;" /></td>
+    <td class="e"></td>
+	<td><input type="button" class="button silver key ipa"  value="&#x0274;" /></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Trill</td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0280;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Tap or Flap</td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Fricative</td>
+    <td><input type="button" class="button silver key ipa"  value="&#x00E7;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x029D;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="x" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0263;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x03C7;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0281;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0127;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0295;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="h" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0266;" /></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">L. Fricative</td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Approximant</td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa tTip" title="<b>y</b>es, <b>y</b>ellow" value="j" /></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0270;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">L. Approx.</td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x028E;" /></td>
+    <td class="e"></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x029F;" /></td>
+    <td class="e"></td>
+    <td class="e"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+    <td class="f"></td>
+  </tr>
+</table>
+					</div>							
+				</div> 
+
+				<div id="tab4" class="tab_content" style="display:none;">
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 240px;">
+
+  <tr class="tr">
+    <td class="tL">Clicks</td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0298;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x01C0;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x01C3;" /></td>
+	<td><input type="button" class="button silver key ipa"  value="&#x01C2;" /></td>
+	<td><input type="button" class="button silver key ipa"  value="&#x01C1;" /></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Voiced Implosives</td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0253;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0257;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="&#x0284;" /></td>
+	<td><input type="button" class="button silver key ipa"  value="&#x0260;" /></td>
+	<td><input type="button" class="button silver key ipa"  value="&#x029B;" /></td>
+  </tr>
+  <tr class="tr">
+    <td class="tL">Ejectives</td>
+    <td><input type="button" class="button silver key ipa"  value="&#x2019;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="p&#x2019;" /></td>
+    <td><input type="button" class="button silver key ipa"  value="k&#x2019;" /></td>
+	<td><input type="button" class="button silver key ipa"  value="s&#x2019;" /></td>
+	<td><input type="button" class="button silver key ipa"  value="t&#x2019;" /></td>
+  </tr>
+</table>
+					</div>
+				</div> 
+														
+				<div id="tab5" class="tab_content" style="display:none;">
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin-top:20px; margin-left:20px;width:800px;">
+  <tr>
+    <td></td>
+    <td class="tT" >Front</td>
+    <td class="tT" >Central</td>
+    <td class="tT" >Back</td>
+  </tr>
+  <tr class="tr" style="height:130px;">
+    <td class="tL">Close</td>
+    <td colspan="3" rowspan="4"><div style="padding:20px;height:450px;"><div style="position:relative; margin-bottom:20px;"><img id="vowels" alt="Vowel Chart" src="/css/vowel.png" width="461" height="397" /><div style="position:absolute; "><div><input type="button" class="button silver key circle" value="i" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="y" /><input type="button" class="button silver key circle" style="margin-left:80px;" value="&#x0268;" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="&#x0289;" /><input type="button" class="button silver key circle" style="margin-left:130px;" value="&#x026F;" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="u" /></div><div class="clear"></div><div style="margin-top:10px;"><input type="button" class="button silver key circle tTip" title="h<b>i</b>t, s<b>i</b>tting" style="margin-left:120px;" value="&#x026A;" /><input type="button" class="button silver key circle" value="&#x028F;" /><input type="button" class="button silver key circle tTip" title="p<b>u</b>t, s<b>oo</b>t" style="margin-left:180px;" value="&#x028A;" /></div><div class="clear"></div><div style="margin-top:10px;"><input type="button" class="button silver key circle tTip" title="m<b>e</b>t, b<b>e</b>d" style="margin-left:60px;"  value="e" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="&#x00F8;" /><input type="button" class="button silver key circle" style="margin-left:60px;"  value="&#x0258;" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="&#x0275;" /><input type="button" class="button silver key circle" style="margin-left:90px;"  value="&#x0264;" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="o" /></div><div class="clear"></div><div style="margin-top:10px;"><input type="button" class="button silver key circle tTip" title="<b>a</b>way, <b>a</b>bout" style="background:#FF1C74; color:#fff; text-shadow:0 1px -1px #999; margin-left:310px;" value="&#x0259;" /></div><div class="clear"></div><div style="margin-top:10px;"><input type="button" class="button silver key circle" style="margin-left:120px;"  value="&#x025B;" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="&#x0153;" /><input type="button" class="button silver key circle" style="margin-left:40px;"  value="&#x025C;" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="&#x025E;" /><input type="button" class="button silver key circle tTip" title="c<b>u</b>p, l<b>u</b>ck" style="margin-left:50px;"  value="&#x028C;" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="&#x0254;" /></div><div class="clear"></div><div style="margin-top:10px;"><input type="button" class="button silver key circle tTip" title="c<b>a</b>t, bl<b>a</b>ck" style="margin-left:150px;" value="&#x00E6;" /><input type="button" class="button silver key circle" style="margin-left:150px;" value="&#x0250;" /></div><div class="clear"></div><div style="margin-top:10px;"><input type="button" class="button silver key circle" style="margin-left:190px;" value="a" /><input type="text" class="dot" /><input type="button" class="button silver key circle" value="&#x0276;" /><input type="button" class="button silver key circle" style="margin-left:150px;" value="&#x0251;" /><input type="text" class="dot" /><input type="button" class="button silver key circle tTip" title="d<b>o</b>g, r<b>o</b>tten" value="&#x0252;" /></div></div></div></div></td>
+  </tr>
+  <tr class="tr" style="height:130px;">
+    <td class="tL">Close-mid</td>
+  </tr>
+  <tr class="tr" style="height:130px;">
+    <td class="tL">Open-mid</td>
+  </tr>
+  <tr class="tr" style="height:130px;">
+    <td class="tL">Open</td>
+  </tr>
+</table>
+					</div>
+				</div> 
+
+				<div id="tab6" class="tab_content" style="display:none;">					
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 140px;">
+
+  <tr>
+    <td><input type="button" class="button silver key diac" value="&#x02C8;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02CC;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02D0;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02D1;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0306;" /></td>
+    <td><input type="button" class="button silver key diac" value="|" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x2016;" /></td>
+    <td><input type="button" class="button silver key diac" value="." /></td>
+	<td><input type="button" class="button silver key diac" value="&#x203F;" /></td>
+  </tr>
+</table>
+					</div>								
+				</div> 
+
+				<div id="tab7" class="tab_content" style="display:none;">					
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 60px;">
+  <tr>
+    <td><input type="button" class="button silver key diac" value="&#x0325;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x032C;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0339;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x031C;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x031F;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0320;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0329;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x032F;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0324;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0330;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x033C;" /></td>	
+  </tr>
+  <tr>
+	<td><input type="button" class="button silver key diac" value="&#x031D;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x031E;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0318;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0319;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x032A;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x033A;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x033B;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x030A;" /></td>	
+	<td><input type="button" class="button silver key diac" value="&#x0308;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x033D;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0303;" /></td>	
+  </tr>
+  <tr>    
+    <td><input type="button" class="button silver key diac" value="&#x031A;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x02B0;" /></td>	
+    <td><input type="button" class="button silver key diac" value="&#x02B7;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02B2;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02E0;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02E4;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x207F;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02E1;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x02DE;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0334;" /></td>
+  </tr>  
+</table>
+					</div>								
+				</div> 
+
+				<div id="tab8" class="tab_content" style="display:none;">						
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 260px;">
+
+  <tr>
+    <td><input type="button" class="button silver key diac" value="&#x030B;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0301;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0304;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0300;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x030F;" /></td>
+  </tr>	
+  <tr>
+    <td><input type="button" class="button silver key diac" value="&#x02E5;" /></td>    
+    <td><input type="button" class="button silver key diac" value="&#x02E6;" /></td>    
+    <td><input type="button" class="button silver key diac" value="&#x02E7;" /></td>	
+    <td><input type="button" class="button silver key diac" value="&#x02E8;" /></td>	
+	<td><input type="button" class="button silver key diac" value="&#x02E9;" /></td>	
+   </tr>	
+   <tr>
+	<td><input type="button" class="button silver key diac" value="&#x2191;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x2197;" /></td>		
+	<td><input type="button" class="button silver key diac" value="&#x2192;" /></td>				
+	<td><input type="button" class="button silver key diac" value="&#x2198;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x2193;" /></td>			
+  </tr>
+</table>
+					</div>								
+				</div> 
+
+				<div id="tab9" class="tab_content" style="display:none;">					
+					<div>
+						
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 180px;">
+
+  <tr>
+	<td><input type="button" class="button silver key diac" value="&#x0255;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x028D;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0265;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x029C;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02A2;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x03C7;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0361;" /></td>
+	<td><input type="button" class="button silver key diac" value="t&#x0361;&#x0283;" /></td>
+  </tr>
+  <tr>
+	<td><input type="button" class="button silver key diac" value="&#x0291;" /></td>
+    <td><input type="button" class="button silver key diac tTip" title="<b>w</b>et, <b>w</b>indo<b>w</b>" value="w" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x027A;" /></td>
+	<td><input type="button" class="button silver key diac" value="&#x0267;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x02A1;" /></td>
+    <td><input type="button" class="button silver key diac" value="&#x0283;" /></td>
+
+	<td><input type="button" class="button silver key diac" value="&#x035C;" /></td>
+	<td><input type="button" class="button silver key diac" value="t&#x0361;s" /></td>		
+	<td><input type="button" class="button silver key diac" value="k&#x0361;p" /></td>	
+  </tr>
+</table>
+					</div>								
+				</div>
+				<div id="tab10" class="tab_content" style="display:none;">
+					<div>
+						<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 150px;">
+  <tr>
+    <td></td>
+		<td class="tT xT">t<b>a</b>me</td>
+		<td class="tT xT">s<b>i</b>de</td>
+		<td class="tT xT">c<b>o</b>w</td>
+		<td class="tT xT">l<b>o</b>ad</td>
+		<td class="tT xT">b<b>o</b>y</td>
+		<td class="tT xT">b<b>a</b>re</td>
+		<td class="tT xT">h<b>e</b>re</td>
+		<td class="tT xT">p<b>oo</b>r</td>
+  </tr>
+  <tr class="tr">
+	<td class="tL flag"><img src="/flags/gb.png" alt="United States" title="United Kingdom" width="16" height="11" /> United Kingdom</td>
+		<td><input type="button" class="button silver key ipa tTip" value="e&#x026A;" title="t<b>a</b>me, l<b>a</b>te" /></td>
+		<td><input type="button" class="button silver key ipa tTip" value="a&#x026A;" title="s<b>i</b>de, f<b>i</b>ght" /></td>
+		<td><input type="button" class="button silver key ipa tTip" value="a&#x028A;" title="c<b>o</b>w, l<b>o</b>ud" /></td>
+		<td><input type="button" class="button silver key ipa tTip" value="&#x0259;&#x028A;"  title="l<b>o</b>ad, n<b>o</b>se" /></td>
+		<td><input type="button" class="button silver key ipa tTip" value="&#x0254;&#x026A;"  title="b<b>o</b>y, n<b>o</b>ise" /></td>
+		<td><input type="button" class="button silver key ipa tTip" value="e&#x0259;"  title="b<b>a</b>re, squ<b>a</b>re" /></td>
+		<td><input type="button" class="button silver key ipa tTip" value="&#x026A;&#x0259;"  title="h<b>e</b>re, f<b>e</b>ared" /></td>
+		<td><input type="button" class="button silver key ipa tTip" value="&#x028A;&#x0259;"  title="p<b>oo</b>r, c<b>u</b>re" /></td>
+  </tr>
+</table><div style="margin-bottom:30px;"></div>
+<table border="0" cellpadding="0" cellspacing="0" style="margin:20px 0 10px 10px;">
+  <tr>
+    <td></td>
+		<td class="tT xT">f<b>a</b>ce</td>
+		<td class="tT xT">pr<b>i</b>ce</td>
+		<td class="tT xT">ch<b>oi</b>ce</td>
+		<td class="tT xT">m<b>ou</b>th</td>
+		<td class="tT xT">g<b>oa</b>t</td>
+		<td class="tT xT">n<b>ea</b>r</td>
+		<td class="tT xT">sq<b>ua</b>re</td>
+		<td class="tT xT">c<b>u</b>re</td>
+		<td class="tT xT">f<b>o</b>rce</td>
+		<td class="tT xT">st<b>a</b>rt</td>
+		<td class="tT xT">l<b>ia</b>r</td>	
+		<td class="tT xT">l<b>awy</b>er</td>	
+		<td class="tT xT">p<b>owe</b>r</td>	
+		<td class="tT xT">l<b>owe</b>r</td>	
+  </tr>
+  <tr class="tr">
+	<td class="tL flag"><img src="/flags/us.png" alt="United States" title="United States" width="16" height="11" /> USA</td>
+		<td><input type="button" class="button silver key ipa" value="e&#x026A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="a&#x026A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="&#x0254;&#x026A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="a&#x028A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="o&#x028A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="&#x026A;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="&#x025B;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="&#x028A;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="&#x0254;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="&#x0251;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="a&#x026A;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="&#x0254;&#x026A;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="a&#x028A;&#x025A;" /></td>
+		<td><input type="button" class="button silver key ipa" value="o&#x028A;&#x025A;" /></td>
+  </tr>
+</table>
+					</div>								
+				</div>
+				
+			</div>
+		</div><div style="clear:both;"></div><div align="center" class="mt10" id="iWvr">
+				<a target="_blank" href="http://www.sciweavers.org/i2type">i2Type</a> 
+				<a style="margin-left:10px;" target="_blank" href="http://www.sciweavers.org/sci2ools">Sci2ools</a> 
+				<a style="margin-left:10px;" target="_blank" href="http://www.sciweavers.org">Sciweavers.org</a>
+			</div><div class="options"><a id="clear_btn"></a></div><div id="SmartMode"><input type = "checkbox" id="smart_check" checked="checked" /> Smart Mode</div></div><div><input type="hidden" id="downloadFile" name="downloadFile" value="1" /></div>							
+					</div>					
+                    <div id="downloadDiv"></div>
+					<div><input type="hidden" id="extName" name="extName" /></div>
+					<div><input type="hidden" id="server_job" name="server_job" /></div>
+					<div><input type="hidden" id="font_size" name="font_size" /></div>					
+				</form>
+			</div>			
+		</div>
+	<div style="text-align:center;margin:40px 0 30px 0;"><script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- 728x90 Status -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-5930435762906662"
+				     data-ad-slot="3511893403"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script></div><div class="headline" style="margin-bottom:10px; color:#ff0033;">More Free Tools from Sciweavers</div><div id="inpMthdFrame">
+				<div><a class="inpMthd" href="http://www.sciweavers.org" title="Academic Bookmarking Network">Sciweavers</a></div>
+				<div><a class="inpMthd" href="http://www.i2speak.com" title="Smart IPA Phonetics Keyboard">i2Speak</a></div>
+				<div><a class="inpMthd" href="http://www.sciweavers.org/i2symbol" title="Enrich your Messages with Cool Symbols on Facebook, Twitter, Google Plus, Email">i2Symbol</a></div>
+				<div><a class="inpMthd" href="http://www.sciweavers.org/free-online-ocr" title="Extract Text from Scanned Documents">i2OCR</a></div>
+				<div><a class="inpMthd" href="http://www.sciweavers.org/free-online-latex-equation-editor" title="Convert Latex Equations into Images to Embed in Documents">iTex2Img</a></div>
+				<div><a class="inpMthd" href="http://www.sciweavers.org/free-online-html-to-pdf" title="Convert Web Page to Elegant Printer Friendly PDF">iWeb2Print</a></div>				
+				<div><a class="inpMthd" href="http://www.sciweavers.org/free-online-web-to-image" title="Convert Web Page to High Resolution Image Snapshot">iWeb2Shot</a></div>
+				<div><a class="inpMthd" href="http://www.sciweavers.org/i2type" title="International On-screen Language Keyboard">i2Type</a></div>
+				<div><a class="inpMthd" href="http://www.sciweavers.org/free-online-pdf-split" title="Split a PDF into Useful Pages or Chapters in PDF too">iPdf2Split</a></div>								
+				<div><a class="inpMthd" href="http://www.sciweavers.org/free-online-pdf-merge" title="Merge Multiple PDF Files into Single PDF File">iPdf2Merge</a></div>		
+												
+				<div style="clear:both;"></div>
+				<div style="margin-top:5px;"></div>
+															
+				<div><a class="inpMthd" href="http://www.i2bopomo.com" title="Chinese BoPoMoFo Input Method">i2Bopomofo</a></div>
+				<div><a class="inpMthd" href="http://www.i2pinyin.com" title="Chinese Pinyin Input Method">i2Pinyin</a></div>				
+				<div><a class="inpMthd" href="http://www.i2cantonese.com" title="Chinese Cantonese Input Method">i2Cantonese</a></div>
+				<div><a class="inpMthd" href="http://www.i2cangjie.com" title="Chinese Cangjie Input Method">i2Cangjie</a></div>								
+				<div><a class="inpMthd" href="http://www.i2arabic.com/" title="Arabic Input Method">i2Arabic</a></div>								
+				<div><a class="inpMthd" href="http://www.sciweavers.org/i2style" title="CSS3 Button and Banner generator">i2Style</a></div>				
+				<div><a class="inpMthd" href="http://www.sciweavers.org/i2img" title="Image Converter">i2Image</a></div>								
+				<div><a class="inpMthd" href="http://www.sciweavers.org/pdf2x" title="PDF tools">i2PDF</a></div>				
+				<div><a class="inpMthd" href="http://www.sciweavers.org/l2rtf" title="Latex to RTF">iLatex2Rtf</a></div>				
+				<div><a class="inpMthd" href="http://www.sciweavers.org/sci2ools" title="Free Online Tools">Sci2ools</a></div>				
+				
+				<div style="clear:both;"></div>
+			</div>
+			<div style="text-align:center; margin-top:30px;"><script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- 300x250_Mixed -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:300px;height:250px"
+		     data-ad-client="ca-pub-5930435762906662"
+		     data-ad-slot="4066731400"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script></div></div><div id="socialplug"><div style="padding-left:5px;padding-top:20px;"><div class="fb-like" data-href="http://www.i2speak.com" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false" style="border:none; overflow:hidden; width:50px; height:65px;"></div></div><div style="padding-top:20px;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.i2speak.com" data-count="vertical" data-via="sci2ools" data-related="sciweavers">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div><div style="padding-left:2px;padding-top:20px;"><g:plusone size="tall" data-count="true" href="http://www.i2speak.com"></g:plusone></div></div><div class="contentTitle">Features</div><div class="iContent"><div style="padding:20px;">
+	<div class="use">
+	The <span class="bold">Smart IPA</span> Keyboard lets you quickly type IPA phonetics without the need to memorize any symbol code. For every Roman character you type, 
+	a popup menu displays a group of phonetic symbols that share the same sound or shape beneath typed character. Use arrow keys to select the proper symbol then hit the Enter button.
+	</div>
+
+	<div class="use">
+	The <span class="bold">Sampa English</span> Keyboard lets you type English phonetics using Roman characters according to SAMPA (Speech Assessment Methods Phonetic Alphabet) rules.
+	</div>
+
+	<div class="use">
+	The <span class="bold">IPA English</span> Keyboard provides you with a full English phonetics keyboard. Press the symbol of interest using a suitable input device.
+	</div>
+
+	<div class="use">
+	You can type directly on your physical keyboard or on the virtual on-screen keyboard using a suitable input device such as mouse or touch screen device.
+	</div>
+
+	<div class="use">
+	You can change the keyboard symbols by selecting another layout from the listbox located above the virtual keyboard.
+	</div>
+
+	<div class="use">
+	For every keyboard layout, more symbols can be displayed by pressing the CAPS Lock.
+	</div>
+
+	<div class="use">
+	You can convert typed phonetics to the equivalent HTML code (unicode) to insert into your web page by clicking the HTML button. After copying the code using the Copy button, click the Editor button to continue typing.
+	</div>
+
+	<div class="use">
+	When you hover the mouse over an English phonetic button, a slick tooltip will show some example English words.
+	</div>
+
+	<div class="use">
+	You can save typed phonetics as an MS-Word file by clicking the Save button, copy them to clipboard using the Copy button, or post them to Twitter, Facebook, etc by clicking the desired button.
+	</div>
+
+	<div class="use">
+	You can save typed phonetics as a PNG image to insert in a presentation or share on a medium that does not support a proper phonetic font.
+	</div>
+</div>
+</div><span id="spanClonePreview" class="iTextArea" style="height:auto; width:auto; display:none;"></span><div id="divClonePreview"   class="iTextArea" style="height:auto; position:relative;visibility:hidden;" contenteditable="true"></div><script type="text/javascript">
+	<!--
+		var widget = "";
+		var url = String(window.location);
+		if (screen.width < 1440)
+		{
+			widget = "";
+		}
+		else
+		{
+			widget = '<div class="facebook_fan_like" id="facebook_fan_like_right">';
+		}
+		widget += "<g:plus href=\"https:\/\/plus.google.com\/107613250336837690087\" size=\"smallbadge\"><\/g:plus>\r\n\t\t\t\t\t<div id=\"fb_widget\">\r\n\t\t\t\t\t<div style=\"padding-left:10px;\">\r\n\t\t\t\t\t\t<div class=\"twitter_btn\"><a href=\"http:\/\/twitter.com\/sci2ools\" title=\"Follow @sci2ools on Twitter\"><\/a><\/div>\r\n\t\t\t\t\t\t<div class=\"twitter_txt\"><a href=\"http:\/\/twitter.com\/sci2ools\" title=\"Follow @sci2ools on Twitter\">@<b>sci2ools<\/b><\/a><\/div>\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t<div class=\"twitter_btn\"><a href=\"http:\/\/twitter.com\/sciweavers\" title=\"Follow @sciweavers on Twitter\"><\/a><\/div>\r\n\t\t\t\t\t\t<div class=\"twitter_txt\"><a href=\"http:\/\/twitter.com\/sciweavers\" title=\"Follow @sciweavers on Twitter\">@<b>sciweavers<\/b><\/a><\/div>\t\t\t\t\t\t\r\n\t\t\t\t\t<\/div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"twitter_div\"><\/div>\r\n\t\t\t\t\t<iframe src=\"\/\/www.facebook.com\/plugins\/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fsciweavers&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23fff&amp;stream=false&amp;header=false&amp;height=258&amp;appId=216696181724747\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:240px; height:160px;\" allowTransparency=\"true\"><\/iframe>\r\n\t\t\t\t<\/div>" + "</div>";
+		document.writeln(widget);
+	//-->
+	</script></div>
+	<div class="footer">
+		<div class="entry">						
+			<div class="rounded join">
+				<div style="margin-left:70px;">
+					<div class="title">Join Our Newsletter</div>				
+					<form id="newsletter_form" action="/process_newsletter_form/" method="post" enctype="multipart/form-data">
+						<div id="newsletter_response"></div>
+						<input class="join_textbox" type="text" name="email" id="email" value="e-mail" onblur="if (this.value=='') this.value = 'e-mail'" onclick="if (this.value=='e-mail') this.value = '' " />
+						<input class="join_btn"  type="submit" value="Join" style="width:120px;" name="submit" />
+						<span class="tinyDesc"> </span>
+					</form>						
+				</div>			
+			</div>			
+
+			<div style="float:left; padding:10px;"></div>
+					
+			<div class="rounded company">
+				<div class="ft_link"><a href="/about">About</a></div>			
+				<div class="ft_link"><a href="/contact">Contact</a></div>												
+				<div class="ft_link"><a href="/privacy">Privacy Policy</a></div>
+				<div class="ft_link"><a href="/terms">Terms of Use</a></div>								
+			</div>
+		</div>		
+	
+		<div class="clear"></div>
+	
+		<div id="copyright">
+		<span class="ml3"></span>i2Speak is owned and operated by <a href="http://sciweavers.org"><span class="ml3"></span>Sciweavers LLC<span class="ml3"></span></a><span class="ml3"></span>Copyright &copy; 2009 - 2011<span class="ml3"></span> All rights reserved.
+		</div>
+	</div><script type="text/javascript">				
+				
+				//<![CDATA[
+				$(document).ready(function(){
+				
+						var options_i2theme_newsletter_form = { 
+							target:    "#newsletter_response",
+							url:       "/process_newsletter_form",
+							type:      "post",
+						}; 
+						
+						$("#newsletter_form").submit(function() {
+							
+							$(this).ajaxSubmit(options_i2theme_newsletter_form);
+							return false;
+						});					
+				});
+				//]]>
+			</script><link href="https://plus.google.com/107613250336837690087" rel="publisher" /><script type="text/javascript">(function() {var po = document.createElement("script");po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(po, s);})();</script><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=216696181724747";fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script><script type="text/javascript" src="/js/min/i2type.min.js?12"></script>
+			   <script type="text/javascript" src="/js/min/keyboard.min.js?5"></script>
+			   <script type="text/javascript" src="/zeroclipboard/ZeroClipboard.js"></script>
+			   <script type="text/javascript" src="/js/tTip.js"></script>
+			   <script type="text/javascript">var sc_project=7396595;var sc_invisible=1;var sc_security="0ca10704";</script><script type="text/javascript" src="http://www.statcounter.com/counter/counter.js"></script></body></html>

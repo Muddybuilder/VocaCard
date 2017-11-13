@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="324.0" prefWidth="689.0" stylesheets="@css/KeyBox.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vocacard.FileBoxController">
+   <children>
+      <StackPane fx:id="s1" alignment="TOP_LEFT">
+         <children>
+            <Rectangle fx:id="root1" arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="34.0" stroke="#dddbdb" strokeType="OUTSIDE" strokeWidth="0.1" width="687.0">
+               <effect>
+                  <InnerShadow height="15.0" radius="7.0" width="15.0" />
+               </effect>
+            </Rectangle>
+            <BorderPane fx:id="b1" prefHeight="36.0" prefWidth="689.0">
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+               <right>
+                  <ImageView fx:id="tview" fitHeight="25.0" fitWidth="30.0" onMouseReleased="#onFind" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@image/folder_open.png" />
+                     </image>
+                     <BorderPane.margin>
+                        <Insets bottom="3.0" right="8.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </right>
+               <center>
+                  <TextField id="nm11" fx:id="path" alignment="TOP_LEFT" editable="false" onAction="#onChanged" prefHeight="22.0" prefWidth="645.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="8.0" right="3.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+      <Label id="bold11" fx:id="lblerror" alignment="TOP_LEFT" prefHeight="25.0" prefWidth="684.0" style="-fx-graphic: url('vocacard/image/error.png'); -fx-text-fill: orange;" text="lblerror" wrapText="true">
+         <padding>
+            <Insets bottom="5.0" top="2.0" />
+         </padding>
+      </Label>
+      <StackPane fx:id="s2" prefHeight="266.0" prefWidth="689.0">
+         <children>
+            <BorderPane fx:id="imgpane">
+               <center>
+                  <ImageView fx:id="imgvw" fitHeight="248.0" fitWidth="672.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </center>
+            </BorderPane>
+            <BorderPane fx:id="sndpane" visible="false">
+               <center>
+                  <VBox prefHeight="48.0" prefWidth="689.0" spacing="5.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <children>
+                        <HBox spacing="5.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label id="nm11" prefHeight="23.0" prefWidth="69.0" text="미리 듣기 : " />
+                              <Button fx:id="btnplay" mnemonicParsing="false" onAction="#onPlay" style="-fx-graphic: url('vocacard/image/play.png');" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</VBox>

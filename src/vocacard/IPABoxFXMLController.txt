@@ -1,0 +1,637 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vocacard;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.SVGPath;
+
+/**
+ * FXML Controller class
+ *
+ * @author user
+ */
+public class IPABoxFXMLController implements Initializable {
+    @FXML
+    private BorderPane root;
+    @FXML
+    private Rectangle root1;
+    @FXML
+    private BorderPane root3;
+    private TextField tfield;
+    @FXML
+    private ImageView tview;
+    @FXML
+    private AnchorPane root4;
+    @FXML
+    private Rectangle root2;
+    @FXML
+    private Button btnsel;
+    @FXML
+    private Pane selector;
+    @FXML
+    private Button btn0;
+    @FXML
+    private Button btn1;
+    @FXML
+    private Button btn2;
+    @FXML
+    private Button btn3;
+    @FXML
+    private Button btn4;
+    @FXML
+    private Button btn5;
+    @FXML
+    private Pane help;
+    @FXML
+    private Pane diacritics;
+    @FXML
+    private Button d1;
+    @FXML
+    private Button d2;
+    @FXML
+    private Button d3;
+    @FXML
+    private Button d4;
+    @FXML
+    private Button d5;
+    @FXML
+    private Button d6;
+    @FXML
+    private Button d7;
+    @FXML
+    private Button d8;
+    @FXML
+    private Button d9;
+    @FXML
+    private Button d10;
+    @FXML
+    private Button d11;
+    @FXML
+    private Button d12;
+    @FXML
+    private Button d13;
+    @FXML
+    private Button d14;
+    @FXML
+    private Button d15;
+    @FXML
+    private Button d16;
+    @FXML
+    private Button d17;
+    @FXML
+    private Button d18;
+    @FXML
+    private Button d19;
+    @FXML
+    private Button d20;
+    @FXML
+    private Button d21;
+    @FXML
+    private Button d22;
+    @FXML
+    private Button d23;
+    @FXML
+    private Button d24;
+    @FXML
+    private Button d25;
+    @FXML
+    private Button d26;
+    @FXML
+    private Button d27;
+    @FXML
+    private Button d28;
+    @FXML
+    private Button d29;
+    @FXML
+    private Button d30;
+    @FXML
+    private Button d31;
+    @FXML
+    private Button d32;
+    @FXML
+    private Pane supra;
+    @FXML
+    private Pane non_pulmo;
+    @FXML
+    private Pane other;
+    
+    @FXML
+    private Button n1;
+    @FXML
+    private Button n2;
+    @FXML
+    private Button n3;
+    @FXML
+    private Button n4;
+    @FXML
+    private Button n5;
+    @FXML
+    private Button n6;
+    @FXML
+    private Button n7;
+    @FXML
+    private Button n8;
+    @FXML
+    private Button n9;
+    @FXML
+    private Button n10;
+    @FXML
+    private Button n11;
+    @FXML
+    private Button n12;
+    @FXML
+    private Button n13;
+    @FXML
+    private Button n14;
+    @FXML
+    private Button n15;
+    @FXML
+    private VBox npbox;
+    @FXML
+    private VBox dvbox;
+    @FXML
+    private VBox svbox;
+    @FXML
+    private Button s1;
+    @FXML
+    private Button s2;
+    @FXML
+    private Button s3;
+    @FXML
+    private Button s4;
+    @FXML
+    private Button s5;
+    @FXML
+    private Button s6;
+    @FXML
+    private Button s7;
+    @FXML
+    private Button s8;
+    @FXML
+    private Button s9;
+    @FXML
+    private VBox ovbox;
+    @FXML
+    private Button o1;
+    @FXML
+    private Button o2;
+    @FXML
+    private Button o3;
+    @FXML
+    private Button o4;
+    @FXML
+    private Button o5;
+    @FXML
+    private Button o6;
+    @FXML
+    private Button o7;
+    @FXML
+    private Button o8;
+    @FXML
+    private Button o9;
+    @FXML
+    private Button o10;
+    @FXML
+    private Button o11;
+    @FXML
+    private Button o12;
+    @FXML
+    private Button o13;
+    @FXML
+    private Button o14;
+    @FXML
+    private Button o15;
+    @FXML
+    private Button o16;
+    @FXML
+    private Button o17;
+    @FXML
+    private Pane tones;
+    @FXML
+    private VBox tvbox;
+    @FXML
+    private Button t1;
+    @FXML
+    private Button t2;
+    @FXML
+    private Button t3;
+    @FXML
+    private Button t4;
+    @FXML
+    private Button t5;
+    @FXML
+    private Button t6;
+    @FXML
+    private Button t7;
+    @FXML
+    private Button t8;
+    @FXML
+    private Button t9;
+    @FXML
+    private Button t10;
+    @FXML
+    private Button t11;
+    @FXML
+    private Button t12;
+    @FXML
+    private Button t13;
+    @FXML
+    private Button t14;
+    @FXML
+    private Button t15;
+    
+    private final String[] btn1str = {"\u0325", "\u032C", "\u0339", "\u031C", "\u031F", "\u0320", "\u0329", "\u032F", 
+                                      "\u0324", "\u0330", "\u033C", "\u031D", "\u031E", "\u0318", "\u0319", "\u032A",
+                                      "\u033A", "\u033B", "\u030A", "\u0308", "\u033D", "\u0303", "\u031A", "\u02B0",
+                                      "\u02B7", "\u02B2", "\u02E0", "\u02E4", "\u207F", "\u02E1", "\u02DE", "\u0334"};
+    
+    private final String[] btn2str = {"\u0298", "\u01C0", "\u01C3", "\u01C2", "\u01C1", "\u0253", "\u0257", "\u0284", 
+                                      "\u0260", "\u029B", "\u2019", "p\u2019", "k\u2019", "s\u2019", "t\u2019" };
+    
+    private final String[] btn3str = {"\u02C8", "\u02CC", "\u02D0", "\u02D1", "\u0306", "|", "\u2016", ".", "\u203F"};
+    
+    private final String [] btn4str = {"\u030B", "\u0301", "\u0304", "\u0300", "\u030F", "\u02E5", "\u02E6", "\u02E7", 
+                                       "\u02E8", "\u02E9", "\u2191", "\u2197", "\u2192", "\u2198", "\u2193" };
+    
+    private final String [] btn5str = {"\u0255", "\u028D", "\u0265", "\u029C", "\u02A2", "\u03C7", "\u0361", "t\u0361\u0283", 
+                                       "\u0291", "w", "\u027A", "\u0267", "\u02A1", "\u0283", "\u035C", "t\u0361s", "k\u0361p" };
+    
+    
+    private Button[] btn1s, btn2s, btn3s, btn4s, btn5s;    
+    private Pane [] panes;
+    
+    Image delkey, addkey;
+    @FXML
+    private SVGPath svg;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private Line ln;
+    @FXML
+    private Pane tipbox;
+    @FXML
+    private Pane clearpane;
+    @FXML
+    private ImageView clear;
+
+    @FXML
+    private void onClear(MouseEvent event) {
+        tfield.setText("");
+        clearpane.setVisible(false);
+    }
+    
+    class X{
+        private final String [] a = { "\u0251", "\u0252", "\u0250", "\u00C6", "\u0276", "\u03B1" };
+        private final String [] b = { "\u0299", "\u03B2", "\u0253", "\u025E" };
+        private final String [] c = { "\u0254", "\u00C7", "\u0276", "\u0255", "\u010D" };
+        private final String [] d = { "\u0256", "\u0257", "\u1E0D", "\u00F0", "d\u032A" };
+        private final String [] e = { "\u0259", "\u025A", "\u0258", "\u1EB9", "\u025B", "\u025C", "\u03B5" };
+        private final String [] f = { "\u0278", "\u0284", "\u025F" };
+        private final String [] g = { "\u0260", "\u0261", "\u0262", "\u029B", "\u03B3", "\u0263" };
+        private final String [] h = { "\u0127", "\u0266", "\u0265", "\u029C", "\u0267", "\u1E27", "\u02B0" };
+        private final String [] i = { "\u026A", "\u0268", "\u026A", "\u0308" };
+        private final String [] j = { "\u025F", "\u029D", "\u01F0", "\u02B2" };
+        private final String [] l = { "\u029F", "\u026D", "\u026E", "\u026B", "\u026C" };
+        private final String [] m = { "\u0271", "\u026F", "\u0270" };
+        private final String [] n = { "\u014B", "\u0272", "\u0273", "n\u032A" };
+        private final String [] o = { "\u0254", "\u0153", "\u0252", "\u00D6", "\u1ECD" };
+        private final String [] p = { "\u0278" };
+        private final String [] r = { "\u0279", "\u0280", "\u0281", "\u027E", "\u027D" };
+        private final String [] s = { "\u0283", "\u0282", "\u0161", "\u0284", "\u015B", "\u1E63" };
+        private final String [] t = { "\u03B8", "\u00F0", "\u0288", "\u1E6D", "\u032A" };
+        private final String [] u = { "\u028A", "\u00FC", "\u0289" };
+        private final String [] v = { "\u028B", "\u028C" };
+        private final String [] w = { "\u02B7", "\u0175", "\u02B7", "\u026F", "\u0270" };
+        private final String [] x = { "\u03C7" };
+        private final String [] y = { "\u028F", "\u028E", "\u0177", "\u0263", "\u0264" };
+        private final String [] z = { "\u0292", "\u0290", "\u017E", "\u1E93", "\u0291" };
+        private final String [] d0 = { "\u00F8", "\u0298", "\u0275" };
+        private final String [] d1 = { "|", "\u01C0", "\u2016", "\u01C1", "\u01C2" };
+        private final String [] d2 = { "\u0294", "\u0295", "\u02A1", "\u02A2" };
+        private final String [] d3 = { "\u025B", "\u025C", "\u0292", "\u025D", "\u025E" };
+        private final String [] equals = { "\u2016", "\u01C1", "\u01C2" };
+        private final String [] semicolon = { "\u02D0" };
+        private final String [] quote = { "\u02D1" };
+        private final String [] slash = { "\u030B", "\u0301" };
+        private final String [] backslash = { "\u030F", "\u0300" };
+        private final String [] underdash = { "\u0325", "\u032F", "\u032C", "\u0339", "\u031C", "\u031F", "\u035C" };
+        private final String [] upperv = { "\u030A", "\u02DE", "\u0303", "\u0308", "\u033D", "\u0361" };
+        private final String [] question = d2;
+        private final String [] upperone = d1;        
+        
+        public final String [][] lists  = {a, b, c, d, e, f, g, h, i, j, l, m, n, o, p, r, s, t, u, v, w, x, y, z,
+                                          d0, d1, d2, d3, equals, semicolon, quote, slash, backslash, underdash, upperv, question, upperone};
+        
+        public final String [] listkey = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "L", "M", "N", "O", "P", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+                                           "0", "1", "2", "3", "=", ":", "'", "/", "\\", "_", "^", "?", "|" };
+        
+        public String [] getKeyList(String s){
+            String [] val = null;
+            for (int c=0; c<listkey.length; c++){
+                if (listkey[c].equals(s)){
+                    val = lists[c];
+                }
+            }
+            return val;
+        }
+         
+    };
+
+    /**
+     * Initializes the controller class.
+     */
+    
+    VBox pane;
+    ToolTipBoxFXMLController con;
+    X x;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(VocaCard.class.getResource("ToolTipBoxFXML.fxml"));
+            pane  = (VBox) fxmlLoader.load();
+            con = (ToolTipBoxFXMLController) fxmlLoader.getController();
+            tipbox.getChildren().add(pane);
+            tipbox.setVisible(false);
+            
+            x = new X();
+            
+            tfield = new TextField();
+            
+            
+            
+            tfield.textProperty().addListener((event)->{
+                clearpane.setVisible(!(tfield.getLength() == 0));            
+            });
+            
+            tfield.setOnKeyPressed((event)->{
+                String code = event.getCode().toString();
+                
+                switch(code){
+                    case "ESC":
+                    case "TAB":
+                        event.consume();
+                        return;
+                        
+                    case "BACK_SPACE":
+                        tfield.deletePreviousChar();
+                        break;
+                        
+                    case "DELETE":
+                        tfield.deleteNextChar();
+                        break;
+                }
+            });
+            
+            tfield.setOnKeyReleased((event)->{
+                String code = event.getText().toUpperCase();
+                                
+                String [] data = x.getKeyList(code);
+                
+                if (data != null){
+                    event.consume();
+                    con.setTextData(data);
+                    con.setFocus();
+                    tipbox.setVisible(true);
+                    tipbox.toFront();
+                }
+            });
+            
+            tfield.setId("tnm23");
+            
+            root3.setCenter(tfield);
+            
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        con.setTextField(tipbox, tfield);
+        
+        btn1s =  new Button[] { d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19,
+                                d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31, d32 };
+        
+        btn2s =  new Button[] { n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15 };
+        
+        btn3s = new Button[] { s1, s2, s3, s4, s5, s6, s7, s8, s9};
+        btn4s = new Button[] { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15 };
+        btn5s = new Button[] { o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17 };
+        
+        panes = new Pane[]{help, diacritics, non_pulmo, supra, tones, other};
+           
+        double wid = dvbox.getPrefWidth() / 11.0;
+        for (int c=0; c<btn1str.length; c++){
+            if (c >= btn1str.length-11)
+                btn1s[c].setId("tnm25");
+            else
+                btn1s[c].setId("tnm30");
+            
+            btn1s[c].setAlignment(Pos.CENTER);
+            btn1s[c].setText(btn1str[c]);
+            btn1s[c].setPrefWidth(wid);
+        }
+        
+        wid = npbox.getPrefWidth() / 5.0;
+        for (int c=0; c<btn2s.length; c++){
+            btn2s[c].setId("tnm20");
+            btn2s[c].setText(btn2str[c]);       
+            btn2s[c].setPrefWidth(wid);
+            btn2s[c].setAlignment(Pos.CENTER);
+        }
+        
+        wid = svbox.getPrefWidth() / 9.0;
+        for (int c=0; c<btn3s.length; c++){
+            btn3s[c].setId("tnm20");
+            btn3s[c].setText(btn3str[c]);
+            btn3s[c].setPrefWidth(wid);
+            btn3s[c].setAlignment(Pos.CENTER);
+        }
+        
+        
+        wid = tvbox.getPrefWidth() / 5.0;
+        for (int c=0; c<btn4s.length; c++){
+            btn4s[c].setId("tnm20");
+            btn4s[c].setText(btn4str[c]);
+            btn4s[c].setPrefWidth(wid);
+            btn4s[c].setAlignment(Pos.CENTER);
+        }        
+        
+        wid = ovbox.getPrefWidth() / 9.0;
+        for (int c=0; c<btn5s.length; c++){
+            btn5s[c].setId("tnm20");
+            btn5s[c].setText(btn5str[c]);
+            btn5s[c].setPrefWidth(wid);
+            btn5s[c].setAlignment(Pos.CENTER);
+        }
+        
+        for (int c=0; c<panes.length; c++){
+            panes[c].setVisible(false);
+        }
+        
+        delkey = new Image(getClass().getResourceAsStream("image/delkeyboard.png"));
+        addkey = new Image(getClass().getResourceAsStream("image/showkeyboard.png"));
+        
+        setSize(470);
+    }
+    
+    public void setSize(double w){
+        root1.setWidth(w);
+        root3.setPrefWidth(w-14);
+        
+        double hrate = 240*(w-12)/675 + 40;
+        double rate = (w-12)/675;
+        
+        supra.setScaleX(rate);
+        other.setScaleX(rate);
+        non_pulmo.setScaleX(rate);
+        diacritics.setScaleX(rate);
+        help.setScaleX(rate);
+        tones.setScaleX(rate);
+              
+        supra.setScaleY(rate);
+        other.setScaleY(rate);
+        non_pulmo.setScaleY(rate);
+        diacritics.setScaleY(rate);
+        help.setScaleY(rate);
+        tones.setScaleY(rate);
+        
+        selector.setPrefWidth(w-43);
+        btnsel.setPrefWidth(w-45);
+        
+        root2.setWidth(w);
+        root2.setHeight(hrate);
+        
+        root4.setPrefSize(w, hrate);
+        btnsel.toFront();
+        
+        svg.setLayoutX(w-16);
+        svg.toFront();
+        
+        btn0.setPrefWidth(w-51);
+        btn1.setPrefWidth(w-51);
+        btn2.setPrefWidth(w-51);
+        btn3.setPrefWidth(w-51);
+        btn4.setPrefWidth(w-51);
+        btn5.setPrefWidth(w-51);
+        
+        ln.setEndX(w-154);
+        vbox.setPrefWidth(w-50);
+        
+        root.setPrefWidth(w);
+    }
+    
+
+    @FXML
+    private void onSelectReleased(ActionEvent event) {
+        if (btnsel.getStyle().length() == 0){
+            selector.toFront();
+            btnsel.setStyle("-fx-effect: innershadow(three-pass-box , black, 10, 0.1 , 0 , 0);");
+            selector.setVisible(true);
+        }
+        else{
+            btnsel.setStyle("");
+            selector.setVisible(false);
+        }
+    }
+    
+    private void setZOrder(int n){
+        panes[n].toFront();
+        for (Pane ps : panes){
+            ps.setVisible(false);
+        }
+        panes[n].setVisible(true);
+    }
+
+    @FXML
+    private void onbtn0Released(ActionEvent event) {
+        btnsel.setStyle("");
+        selector.setVisible(false);
+        btnsel.setText("발음 기호 입력법");
+        
+        setZOrder(0);       
+    }
+
+    @FXML
+    private void onbtn1Released(ActionEvent event) {
+        btnsel.setStyle("");
+        selector.setVisible(false);
+        btnsel.setText("발음 구별 기호");
+        
+        setZOrder(1);
+    }
+
+    @FXML
+    private void onToggle(MouseEvent event) {
+        root4.setVisible(!root4.isVisible());
+        
+        tview.setImage((root4.isVisible()) ? delkey : addkey);
+    }
+
+    @FXML
+    private void onbtn2Released(ActionEvent event) {
+        btnsel.setStyle("");
+        selector.setVisible(false);
+        btnsel.setText("비폐장기류음 기호");
+        
+        setZOrder(2);
+    }
+
+    @FXML
+    private void onbtn3Released(ActionEvent event) {        
+        btnsel.setStyle("");
+        selector.setVisible(false);
+        btnsel.setText("상단 발음 기호");
+        
+        setZOrder(3);
+    }
+
+    @FXML
+    private void onbtn4Released(ActionEvent event) {
+        btnsel.setStyle("");
+        selector.setVisible(false);
+        btnsel.setText("성조 기호");
+        
+        setZOrder(4);
+    }
+
+    @FXML
+    private void onbtn5Released(ActionEvent event) {
+        btnsel.setStyle("");
+        selector.setVisible(false);
+        btnsel.setText("기타 기호");
+        
+        setZOrder(5);
+    }
+
+    @FXML
+    private void onRootReleased(MouseEvent event) {
+        btnsel.setStyle("");
+        selector.setVisible(false);
+    }
+        
+    @FXML
+    private void onPushText(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        tfield.appendText(btn.getText());
+    }
+}
